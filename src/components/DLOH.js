@@ -9,7 +9,7 @@ export const DLOH = () => (
   <>
     <Route
       render={() => {
-        if (localStorage.getItem("lu_token")) {
+        if (localStorage.getItem("dloh_token")) {
           return (
             <>
               <Route>

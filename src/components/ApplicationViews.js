@@ -1,13 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { NavBar } from "./nav/NavBar";
+import { Armory } from "./armory/Armory";
 
 export const ApplicationViews = () => {
   return (
     <>
-      {/* <Route path="/">
-        <NavBar />
-      </Route> */}
+      <Route path="/">
+        <Armory />
+      </Route>
     </>
   );
 };
