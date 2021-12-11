@@ -16,7 +16,10 @@ Components:
 -- As a logged in and validated user, I am able to see my Destiny 2 characters and their inventories as well as manipulate which items I have equipped in game.
 
 <img src="https://media.giphy.com/media/ZuZYKCYJdl30OspQhM/giphy.gif" height="20" width="38"> &nbsp;&nbsp;&nbsp;<a href="https://github.com/travish-io/DLOH-server">DLOH-server</a>
+<br>
+<br>
 
+-
 
 # Getting Started with Create React App
 
