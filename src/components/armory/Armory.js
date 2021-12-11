@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GetArmoryItems, GetArmoryItem, ArmorySearch } from "./ArmoryManager";
 import "./Armory.css";
@@ -7,7 +7,6 @@ export const Armory = () => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState({});
   const [search, updateSearch] = useState("");
-  const history = useHistory();
 
   useEffect(() => {
     ArmorySearch(search).then((data) => setItems(data));
@@ -33,7 +32,9 @@ export const Armory = () => {
             .map((i) => {
               return (
                 <div className="armory-item-icon" key={i.id} id={i.item_hash}>
-                  <img src={`https://www.bungie.net${i.icon}`} alt={i.name} />
+                  <Link to={`/${i.item_hash}`}>
+                    <img src={`https://www.bungie.net${i.icon}`} alt={i.name} />
+                  </Link>
                 </div>
               );
             })
