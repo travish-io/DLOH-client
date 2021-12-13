@@ -1,0 +1,17 @@
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.armory-item-icon {
+  margin: 3px;
+}
+
+.search-container {
+  display: flex;
+}
+
+.armory-searchbar {
+  width: 33%;
+  margin: 0 33% 0 33%;
+}

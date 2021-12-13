@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import crypto from "crypto";
 import { Link, useHistory } from "react-router-dom";
 import "./Auth.css";
 
@@ -7,6 +8,12 @@ export const Login = () => {
   const password = useRef();
   const invalidDialog = useRef();
   const history = useHistory();
+  let state = crypto.randomBytes(28).toString("hex");
+  const APIKey = "85171a1ba12b47c3a02def4c66f45d6f";
+  const redirectUri = `https://127.0.0.1:8000/?api_key=${APIKey}`;
+  const clientId = 38507;
+
+  console.log(state);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -32,7 +39,6 @@ export const Login = () => {
         }
       });
   };
-
   return (
     <main className="container--login">
       <dialog className="dialog dialog--auth" ref={invalidDialog}>
@@ -82,6 +88,11 @@ export const Login = () => {
           </fieldset>
         </form>
       </section>
+      <a
+        href={`https://www.bungie.net/en/oauth/authorize?client_id=${clientId}&response_type=code&state=${state}&redirect_uri=https://127.0.0.1:8000/`}
+      >
+        Test oauth{" "}
+      </a>
       <section className="link--register">
         <Link to="/register">Not a member yet?</Link>
       </section>
