@@ -17,6 +17,11 @@ export const NavBar = () => {
           Loadouts
         </Link>
       </li>
+      <li className="navbar__item active">
+        <Link className="navbar__link" to="/Loadouts/Create">
+          Create Loadout
+        </Link>
+      </li>
     </ul>
   );
 };

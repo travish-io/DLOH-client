@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Armory } from "./armory/Armory";
 import { ArmoryDetail } from "./armory/ArmoryDetail";
+import { CreateLoadout } from "./loadouts/CreateLoadout";
 import { Loadouts } from "./loadouts/Loadouts";
 
 export const ApplicationViews = () => {
@@ -13,8 +14,11 @@ export const ApplicationViews = () => {
       <Route path="/:itemHash(\d+)">
         <ArmoryDetail />
       </Route>
-      <Route path="/Loadouts">
+      <Route exact path="/Loadouts">
         <Loadouts />
+      </Route>
+      <Route exact path="/Loadouts/Create">
+        <CreateLoadout />
       </Route>
     </>
   );

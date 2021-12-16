@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { GetLoadouts, GetLoadout } from "./LoadoutManager";
+import { GetLoadouts } from "./LoadoutManager";
 
 export const Loadouts = () => {
   const [loadouts, setLoadouts] = useState([]);
-  const username = loadouts.map((l) => {
-    return l.dloh_user.user.username;
-  });
+  // const username = loadouts.filter((l) => {
+  //   debugger;
+  //   return l.id === 1;
+  // });
 
   useEffect(() => {
     GetLoadouts().then((data) => setLoadouts(data));
@@ -14,14 +15,12 @@ export const Loadouts = () => {
 
   return (
     <div>
-      <div>
-        <h1>{username}'s Loadouts</h1>
-      </div>
+      <div>{/* <h1>{username.dloh_user.user.username}'s Loadouts</h1> */}</div>
       {loadouts.map((loadout) => {
         return (
           <div className="loadout-container" key={loadout.id} id={loadout.id}>
             <div className="loadout-name">{loadout.name}</div>
-            {loadout.destiny_items_list.map((i) => {
+            {loadout?.destiny_items_list.map((i) => {
               return (
                 <div className="loadout-item" id={i.id}>
                   <div
