@@ -33,7 +33,7 @@ export const Login = () => {
       .then((res) => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("dloh_token", res.token);
-          history.push("/");
+          history.push("/Armory");
         } else {
           invalidDialog.current.showModal();
         }

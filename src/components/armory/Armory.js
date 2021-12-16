@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { GetArmoryItems, GetArmoryItem, ArmorySearch } from "./ArmoryManager";
+import { ArmorySearch } from "./ArmoryManager";
 import "./Armory.css";
-import { ArmoryDetail } from "./ArmoryDetail";
 
 export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   const [items, setItems] = useState([]);
@@ -47,7 +46,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
       <Link
         target={"_blank"}
         rel="noopender noreferrer"
-        to={`/${hash}`}
+        to={`/Armory/${hash}`}
         id={id}
       >
         <img
@@ -77,7 +76,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
       </div>
       <div className="search-results-container">
         <div className="search-results">
-          {history.location.pathname === "/Loadouts/Create"
+          {history.location.pathname !== "/Armory"
             ? items
                 .map((i) => {
                   return (

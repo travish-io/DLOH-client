@@ -8,8 +8,8 @@ export const NavBar = () => {
       style={{ display: "flex-row", justifyContent: "space-evenly" }}
     >
       <li className="navbar__item active">
-        <Link className="navbar__link" to="/">
-          Home
+        <Link className="navbar__link" to="/Armory">
+          Armory
         </Link>
       </li>
       <li className="navbar__item active">

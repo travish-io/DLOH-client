@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { GetLoadouts } from "./LoadoutManager";
+import { GetLoadouts, deleteLoadout } from "./LoadoutManager";
 import "./Loadouts.css";
 
 export const Loadouts = () => {
   const [loadouts, setLoadouts] = useState([]);
-  // const username = loadouts.filter((l) => {
-  //   debugger;
-  //   return l.id === 1;
-  // });
+  const [loadout, setLoadout] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     GetLoadouts().then((data) => setLoadouts(data));
@@ -20,7 +18,9 @@ export const Loadouts = () => {
       {loadouts.map((loadout) => {
         return (
           <div className="loadout-container" key={loadout.id} id={loadout.id}>
-            <div className="loadout-name">{loadout.name}</div>
+            <div className="loadout-name">
+              <Link to={`/Loadouts/Edit/${loadout.id}`}>{loadout.name}</Link>
+            </div>
             {loadout?.destiny_items_list.map((i) => {
               return (
                 <div className="loadout-item" id={i.id}>
@@ -35,6 +35,21 @@ export const Loadouts = () => {
                 </div>
               );
             })}
+            <div className="loadout-btns-container">
+              <div className="loadout-btn">
+                <button>Edit</button>
+              </div>
+              <div className="loadout-btn">
+                <button
+                  onClick={() => {
+                    deleteLoadout(loadout.id);
+                    GetLoadouts().then((data) => setLoadouts(data));
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
         );
       })}

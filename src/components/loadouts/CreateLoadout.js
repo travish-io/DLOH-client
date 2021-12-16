@@ -1,10 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Armory } from "../armory/Armory";
-import { Create } from "./LoadoutManager";
+import { Create, editLoadout, GetLoadout } from "./LoadoutManager";
 
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
+  const [loadout, setLoadout] = useState({});
+  const history = useHistory();
+  const { loadoutId } = useParams();
+
+  useEffect(() => {
+    if (history.location.pathname === `/Loadouts/Edit/${loadoutId}`) {
+      GetLoadout(loadoutId).then((data) => {
+        setLoadout(data);
+        setLoadoutItemsList(data.destiny_items_list);
+      });
+    }
+  }, []);
 
   return (
     <div>
@@ -21,8 +33,8 @@ export const CreateLoadout = () => {
             display: "flex",
           }}
         >
-          {loadoutItemsList.length > 0
-            ? loadoutItemsList.map((item) => {
+          {loadoutItemsList?.length > 0
+            ? loadoutItemsList?.map((item) => {
                 return (
                   <div
                     id={item?.id}
@@ -36,7 +48,7 @@ export const CreateLoadout = () => {
                       onClick={(evt) => {
                         setLoadoutItemsList(
                           loadoutItemsList.filter(
-                            (item) => item.id !== parseInt(evt.target.id)
+                            (item) => item?.id !== parseInt(evt.target.id)
                           )
                         );
                       }}
@@ -54,14 +66,30 @@ export const CreateLoadout = () => {
             : ""}
         </div>
         <div>
-          <button
-            onClick={() => {
-              Create(loadoutItemsList);
-              setLoadoutItemsList([]);
-            }}
-          >
-            Save Loadout
-          </button>
+          {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
+            <button
+              onClick={() => {
+                editLoadout(loadoutId, loadoutItemsList).then(
+                  history.push("/Loadouts")
+                );
+                // setLoadout()
+                // setLoadoutItemsList([]);
+                // something like this...
+                // finish edit fn and probably redirect to /Loadouts instead of setting data
+              }}
+            >
+              Update Loadout
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                Create(loadoutItemsList);
+                setLoadoutItemsList([]);
+              }}
+            >
+              Save Loadout
+            </button>
+          )}
         </div>
       </div>
       <Armory

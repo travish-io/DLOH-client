@@ -12,6 +12,18 @@
 .loadout-item {
   margin-bottom: 3px;
   width: 96px;
+  height: 96px;
+}
+.loadout-btns-container {
+  /* margin-bottom: 3px; */
+  display: flex;
+  flex-direction: column;
+  width: 96px;
+  height: 96px;
+}
+.loadout-btn {
+  width: 100%;
+  height: 50%;
 }
 .loadout-item-icon {
   box-shadow: 1px 10px 20px darkslateblue;
