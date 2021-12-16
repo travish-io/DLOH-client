@@ -15,15 +15,16 @@ export const GetLoadout = (id) => {
 };
 
 export const Create = (list) => {
-  debugger;
   let newList = [];
+
   let name = prompt("Name your Loadout", "");
+
   if (name === null) return;
-  debugger;
+
   for (var { id: x } of list) {
     newList.push(x);
   }
-  console.log(newList);
+
   const newData = {
     name: name,
     loadoutItemsList: newList,

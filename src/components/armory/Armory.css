@@ -30,10 +30,14 @@
 }
 
 .item-checkbox {
-  position: absolute;
-  transform: translateX(80px);
+  /* position: absolute; */
+  /* transform: translateX(80px);
   width: 16px;
-  height: 16px;
+  height: 16px; */
+  border-color: white;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
 }
 /* .item-tooltip {
   display: none;

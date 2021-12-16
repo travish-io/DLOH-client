@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GetLoadouts } from "./LoadoutManager";
+import "./Loadouts.css";
 
 export const Loadouts = () => {
   const [loadouts, setLoadouts] = useState([]);
@@ -14,7 +15,7 @@ export const Loadouts = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container-container">
       <div>{/* <h1>{username.dloh_user.user.username}'s Loadouts</h1> */}</div>
       {loadouts.map((loadout) => {
         return (

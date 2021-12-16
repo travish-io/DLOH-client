@@ -13,31 +13,33 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
     ArmorySearch(search).then((data) => setItems(data));
   }, [search]);
 
-  const LoadoutItem = ({ icon, hash, id, name }) => (
+  const LoadoutItem = ({ icon, hash, id, name, bucket }) => (
     <div id={id} key={hash} className="item-container">
-      <input
-        type={"checkbox"}
+      <button
+        // type={"checkbox"}
         className="item-checkbox"
         id={id}
-        onChange={() => {
+        onClick={() => {
           const newItemObj = {
             icon: icon,
             hash: hash,
             id: id,
             name: name,
+            bucket: bucket,
           };
           return setLoadoutItemsList((loadoutItemsList) => [
             ...loadoutItemsList,
             newItemObj,
           ]);
         }}
-      ></input>
-      <img
-        src={`https://www.bungie.net${icon}`}
-        className="armory-item-icon"
-        alt={name}
-        id={id}
-      />
+      >
+        <img
+          src={`https://www.bungie.net${icon}`}
+          className="armory-item-icon"
+          alt={name}
+          id={id}
+        />
+      </button>
     </div>
   );
   const ArmoryItem = ({ icon, hash, id, name }) => (
@@ -84,6 +86,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
                       hash={i.item_hash}
                       id={i.id}
                       name={i.name}
+                      bucket={i.bucket_hash}
                     />
                   );
                 })

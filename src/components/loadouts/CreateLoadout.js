@@ -3,13 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import { Armory } from "../armory/Armory";
 import { Create } from "./LoadoutManager";
 
-// fetch loadout_items. Add AddLoadoutItem fn to armorymanager and add to item click
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
-  const [item, setItem] = useState(0);
 
-  useEffect(() => {}, []);
-  // make list of items
   return (
     <div>
       <div
@@ -33,24 +29,25 @@ export const CreateLoadout = () => {
                     key={item?.hash}
                     className="item-container"
                   >
-                    <input
+                    <button
                       type={"checkbox"}
                       className="item-checkbox"
                       id={item?.id}
-                      onChange={(evt) => {
+                      onClick={(evt) => {
                         setLoadoutItemsList(
                           loadoutItemsList.filter(
                             (item) => item.id !== parseInt(evt.target.id)
                           )
                         );
                       }}
-                    ></input>
-                    <img
-                      src={`https://www.bungie.net${item?.icon}`}
-                      className="armory-item-icon"
-                      alt={item?.name}
-                      id={item?.id}
-                    />
+                    >
+                      <img
+                        src={`https://www.bungie.net${item?.icon}`}
+                        className="armory-item-icon"
+                        alt={item?.name}
+                        id={item?.id}
+                      />
+                    </button>
                   </div>
                 );
               })
