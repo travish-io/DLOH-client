@@ -1,17 +1,52 @@
 .search-results {
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin: 3rem;
 }
 
 .armory-item-icon {
-  margin: 3px;
+  box-shadow: 1px 10px 20px darkslateblue;
+  transition: 0s 10s;
 }
 
 .search-container {
   display: flex;
+  /* margin-bottom: 1rem; */
 }
 
 .armory-searchbar {
   width: 33%;
   margin: 0 33% 0 33%;
+  box-shadow: 1px 10px 20px goldenrod;
 }
+
+.icon {
+  height: 100%;
+}
+
+.item-container {
+  position: relative;
+}
+
+.item-checkbox {
+  /* position: absolute; */
+  /* transform: translateX(80px);
+  width: 16px;
+  height: 16px; */
+  border-color: white;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+/* .item-tooltip {
+  display: none;
+  transition: all 0s ease 1s;
+  visibility: hidden;
+}
+
+.armory-item-icon:hover + .item-tooltip {
+  display: inline-flex;
+  transition-delay: 0s;
+  visibility: visible;
+} */

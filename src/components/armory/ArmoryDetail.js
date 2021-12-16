@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import ArmoryManager from "./ArmoryManager";
+import { GetArmoryItemDetails, StatsEnum } from "./ArmoryManager";
 import "./Armory.css";
 
 export const ArmoryDetail = () => {
@@ -8,7 +8,7 @@ export const ArmoryDetail = () => {
   const { itemHash } = useParams();
 
   useEffect(() => {
-    ArmoryManager.GetArmoryItemDetails(itemHash).then((data) => setItem(data));
+    GetArmoryItemDetails(itemHash).then((data) => setItem(data));
   }, []);
 
   return (
@@ -18,6 +18,21 @@ export const ArmoryDetail = () => {
         src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
         alt={item?.Response?.displayProperties?.name}
       ></img>
+      <h6>{item?.Response?.itemTypeAndTierDisplayName}</h6>
+      <div>
+        {item?.Response?.investmentStats.map((stat) => {
+          // debugger;
+          for (const i of StatsEnum) {
+            if (stat.statTypeHash === parseInt(i.stat) && stat.value > 0) {
+              return (
+                <div>
+                  {i.name}: {stat.value}
+                </div>
+              );
+            }
+          }
+        })}
+      </div>
       <h4>{item?.Response?.flavorText}</h4>
     </div>
   );
