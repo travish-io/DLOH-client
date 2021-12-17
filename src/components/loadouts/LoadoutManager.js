@@ -1,5 +1,5 @@
 export const GetLoadouts = () => {
-  return fetch("http://localhost:8000/Loadouts", {
+  return fetch("https://dloh.herokuapp.com/Loadouts", {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
@@ -7,7 +7,7 @@ export const GetLoadouts = () => {
 };
 
 export const GetLoadout = (id) => {
-  return fetch(`http://localhost:8000/Loadouts/${id}`, {
+  return fetch(`https://dloh.herokuapp.com/Loadouts/${id}`, {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
@@ -39,8 +39,8 @@ export const Create = (list) => {
     body: JSON.stringify(newData),
   };
 
-  return fetch("http://localhost:8000/Loadouts", fetchOption).then((Response) =>
-    Response.json()
+  return fetch("https://dloh.herokuapp.com/Loadouts", fetchOption).then(
+    (Response) => Response.json()
   );
 };
 
@@ -70,13 +70,13 @@ export const editLoadout = (loadoutId, list) => {
     body: JSON.stringify(newData),
   };
 
-  return fetch(`http://localhost:8000/Loadouts/${loadoutId}`, fetchOption);
+  return fetch(`https://dloh.herokuapp.com/Loadouts/${loadoutId}`, fetchOption);
 };
 
 export const deleteLoadout = (id) => {
   if (window.confirm("Are you sure you want to delete this Loadout?") === false)
     return;
-  fetch(`http://localhost:8000/Loadouts/${id}`, {
+  fetch(`https://dloh.herokuapp.com/Loadouts/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,

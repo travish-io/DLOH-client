@@ -10,7 +10,7 @@ export const GetArmoryItemDetails = (id) => {
 };
 
 export const GetArmoryItems = () => {
-  return fetch("http://localhost:8000/Armory", {
+  return fetch("https://dloh.herokuapp.com/Armory", {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
@@ -18,7 +18,7 @@ export const GetArmoryItems = () => {
 };
 
 export const ArmorySearch = (param) => {
-  return fetch(`http://localhost:8000/Armory?param=${param}`, {
+  return fetch(`https://dloh.herokuapp.com/Armory?param=${param}`, {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
@@ -26,7 +26,7 @@ export const ArmorySearch = (param) => {
 };
 
 export const GetArmoryItem = (itemId) => {
-  return fetch(`http://localhost:8000/Armory/${itemId}`, {
+  return fetch(`https://dloh.herokuapp.com/Armory/${itemId}`, {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
