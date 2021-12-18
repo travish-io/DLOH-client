@@ -6,9 +6,10 @@ import "./Armory.css";
 export const ArmoryDetail = () => {
   const [item, setItem] = useState({});
   const { itemHash } = useParams();
+  const apiKey = "85171a1ba12b47c3a02def4c66f45d6f";
 
   useEffect(() => {
-    GetArmoryItemDetails(itemHash).then((data) => setItem(data));
+    GetArmoryItemDetails(itemHash, apiKey).then((data) => setItem(data));
   }, []);
 
   return (
@@ -21,12 +22,11 @@ export const ArmoryDetail = () => {
       <h6>{item?.Response?.itemTypeAndTierDisplayName}</h6>
       <div>
         {item?.Response?.investmentStats.map((stat) => {
-          // debugger;
           for (const i of StatsEnum) {
-            if (stat.statTypeHash === parseInt(i.stat) && stat.value > 0) {
+            if (stat?.statTypeHash === parseInt(i?.stat) && stat?.value > 0) {
               return (
                 <div>
-                  {i.name}: {stat.value}
+                  {i?.name}: {stat?.value}
                 </div>
               );
             }

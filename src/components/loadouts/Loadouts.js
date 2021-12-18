@@ -18,9 +18,7 @@ export const Loadouts = () => {
       {loadouts.map((loadout) => {
         return (
           <div className="loadout-container" key={loadout.id} id={loadout.id}>
-            <div className="loadout-name">
-              <Link to={`/Loadouts/Edit/${loadout.id}`}>{loadout.name}</Link>
-            </div>
+            <div className="loadout-name">{loadout.name}</div>
             {loadout?.destiny_items_list.map((i) => {
               return (
                 <div className="loadout-item" id={i.id}>
@@ -37,7 +35,9 @@ export const Loadouts = () => {
             })}
             <div className="loadout-btns-container">
               <div className="loadout-btn">
-                <button>Edit</button>
+                <button onClick={<Link to={`/Loadouts/Edit/${loadout.id}`} />}>
+                  Edit
+                </button>
               </div>
               <div className="loadout-btn">
                 <button

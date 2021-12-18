@@ -1,9 +1,9 @@
-export const GetArmoryItemDetails = (id) => {
+export const GetArmoryItemDetails = (id, apiKey) => {
   return fetch(
     `https://www.bungie.net/Platform/Destiny2/Manifest/DestinyInventoryItemDefinition/${id}/`,
     {
       headers: {
-        "x-api-key": "85171a1ba12b47c3a02def4c66f45d6f",
+        "x-api-key": apiKey,
       },
     }
   ).then((res) => res.json());

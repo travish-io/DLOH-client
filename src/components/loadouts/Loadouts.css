@@ -27,6 +27,7 @@
 }
 .loadout-item-icon {
   box-shadow: 1px 10px 20px darkslateblue;
+  height: 96px;
 }
 .loadout-item-name {
   font-size: small;
