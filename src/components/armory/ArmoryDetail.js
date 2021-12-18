@@ -6,10 +6,9 @@ import "./Armory.css";
 export const ArmoryDetail = () => {
   const [item, setItem] = useState({});
   const { itemHash } = useParams();
-  const apiKey = "85171a1ba12b47c3a02def4c66f45d6f";
 
   useEffect(() => {
-    GetArmoryItemDetails(itemHash, apiKey).then((data) => setItem(data));
+    GetArmoryItemDetails(itemHash).then((data) => setItem(data));
   }, []);
 
   return (
