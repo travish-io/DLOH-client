@@ -30,7 +30,7 @@ export const Register = () => {
         .then((res) => {
           if ("token" in res) {
             localStorage.setItem("dloh_token", res.token);
-            history.push("/");
+            history.push("/Armory");
           }
         });
     } else {
