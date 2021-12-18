@@ -45,7 +45,7 @@ export const Login = () => {
         <div>Username or password was not valid.</div>
         <button
           className="button--close"
-          onClick={(e) => invalidDialog.current.close()}
+          onClick={(e) => invalidDialog.current.close(e)}
         >
           Close
         </button>
