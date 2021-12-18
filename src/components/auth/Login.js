@@ -10,7 +10,7 @@ export const Login = () => {
   const history = useHistory();
   let state = crypto.randomBytes(28).toString("hex");
   const APIKey = "85171a1ba12b47c3a02def4c66f45d6f";
-  const redirectUri = `https://127.0.0.1:8000/?api_key=${APIKey}`;
+  const redirectUri = `https://dloh.herokuapp.com/?api_key=${APIKey}`;
   const clientId = 38507;
 
   console.log(state);
@@ -18,7 +18,7 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    return fetch("http://127.0.0.1:8000/login", {
+    return fetch("https://dloh.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export const Login = () => {
       </dialog>
       <section>
         <form className="form--login" onSubmit={handleLogin}>
-          <h1>Level Up</h1>
+          <h1>DLOH</h1>
           <h2>Please sign in</h2>
           <fieldset>
             <label htmlFor="inputUsername"> Username address </label>
@@ -88,11 +88,11 @@ export const Login = () => {
           </fieldset>
         </form>
       </section>
-      <a
+      {/* <a
         href={`https://www.bungie.net/en/oauth/authorize?client_id=${clientId}&response_type=code&state=${state}&redirect_uri=https://127.0.0.1:8000/`}
       >
         Test oauth{" "}
-      </a>
+      </a> */}
       <section className="link--register">
         <Link to="/register">Not a member yet?</Link>
       </section>

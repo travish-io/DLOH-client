@@ -15,7 +15,7 @@ export const Login = () => {
   const history = useHistory();
   let state = crypto.randomBytes(28).toString("hex");
   const APIKey = "85171a1ba12b47c3a02def4c66f45d6f";
-  const redirectUri = `https://127.0.0.1:8000/?api_key=${APIKey}`;
+  const redirectUri = `https://dloh.herokuapp.com/?api_key=${APIKey}`;
   const clientId = 38507;
   const authEndpoint = `https://www.bungie.net/en/oauth/authorize?client_id=${clientId}&response_type=code&state=${state}`;
 
