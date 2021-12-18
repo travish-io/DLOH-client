@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { GetArmoryItemDetails, StatsEnum } from "./ArmoryManager";
+import {
+  GetArmoryItemDetails,
+  itemPerkDefinitions,
+  StatsEnum,
+} from "./ArmoryManager";
 import "./Armory.css";
 
 export const ArmoryDetail = () => {
   const [item, setItem] = useState({});
+  const [perkDefinitions, setPerkDefinitions] = useState([]);
   const { itemHash } = useParams();
 
   useEffect(() => {
     GetArmoryItemDetails(itemHash).then((data) => setItem(data));
+    itemPerkDefinitions().then((data) => setPerkDefinitions(data));
   }, []);
 
   return (

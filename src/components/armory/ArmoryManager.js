@@ -9,6 +9,12 @@ export const GetArmoryItemDetails = (id) => {
   ).then((res) => res.json());
 };
 
+export const itemPerkDefinitions = () => {
+  return fetch(
+    `https://www.bungie.net/common/destiny2_content/json/en/DestinySandboxPerkDefinition-a0921ed4-d9c4-4881-ad7a-999cb843d6a3.json`
+  ).then((res) => res.json());
+};
+
 export const GetArmoryItems = () => {
   return fetch("https://dloh.herokuapp.com/Armory", {
     headers: {
