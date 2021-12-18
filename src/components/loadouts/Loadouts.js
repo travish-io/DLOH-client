@@ -35,7 +35,9 @@ export const Loadouts = () => {
             })}
             <div className="loadout-btns-container">
               <div className="loadout-btn">
-                <button onClick={history.push(`/Loadouts/Edit/${loadout.id}`)}>
+                <button
+                  onClick={() => history.push(`/Loadouts/Edit/${loadout.id}`)}
+                >
                   Edit
                 </button>
               </div>
