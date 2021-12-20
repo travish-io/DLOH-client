@@ -15,7 +15,7 @@ export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   useEffect(() => {
     GetArmoryItemDetails(itemHash).then((data) => setItem(data));
     itemPerkDefinitions().then((data) => setPerkDefinitions(data));
-  }, []);
+  }, [itemHash]);
 
   return (
     <div>
