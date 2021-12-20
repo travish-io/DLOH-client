@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ArmorySearch } from "./ArmoryManager";
 import "./Armory.css";
@@ -6,6 +6,7 @@ import "./Armory.css";
 export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   const [items, setItems] = useState([]);
   const [search, updateSearch] = useState("");
+  const ref = useRef();
   const history = useHistory();
 
   useEffect(() => {
@@ -67,10 +68,10 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
           className="armory-searchbar"
           type="text"
           placeholder="Search for items by name, type or rarity. Ex: 'Exotic Hand Cannon'"
-          value={search}
+          ref={ref}
           onChange={(evt) => {
             evt.preventDefault();
-            updateSearch(evt.target.value);
+            updateSearch(ref.current.value);
           }}
         ></input>
       </div>

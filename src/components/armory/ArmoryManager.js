@@ -1,42 +1,52 @@
-export const GetArmoryItemDetails = (id) => {
-  return fetch(
+const apiKey = "85171a1ba12b47c3a02def4c66f45d6f";
+
+export const GetArmoryItemDetails = async (id) => {
+  const res = await fetch(
     `https://www.bungie.net/Platform/Destiny2/Manifest/DestinyInventoryItemDefinition/${id}/`,
     {
       headers: {
-        "x-api-key": "85171a1ba12b47c3a02def4c66f45d6f",
+        "x-api-key": apiKey,
       },
     }
-  ).then((res) => res.json());
+  );
+  return await res.json();
 };
 
-export const itemPerkDefinitions = () => {
-  return fetch(
+export const itemPerkDefinitions = async () => {
+  const res = await fetch(
     `https://www.bungie.net/common/destiny2_content/json/en/DestinySandboxPerkDefinition-a0921ed4-d9c4-4881-ad7a-999cb843d6a3.json`
-  ).then((res) => res.json());
+  );
+  return await res.json();
 };
 
-export const GetArmoryItems = () => {
-  return fetch("https://dloh.herokuapp.com/Armory", {
+export const GetArmoryItems = async () => {
+  const response = await fetch("https://dloh.herokuapp.com/Armory", {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
-  }).then((response) => response.json());
+  });
+  return await response.json();
 };
 
-export const ArmorySearch = (param) => {
-  return fetch(`https://dloh.herokuapp.com/Armory?param=${param}`, {
+export const ArmorySearch = async (param) => {
+  const response = await fetch(
+    `https://dloh.herokuapp.com/Armory?param=${param}`,
+    {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("dloh_token")}`,
+      },
+    }
+  );
+  return await response.json();
+};
+
+export const GetArmoryItem = async (itemId) => {
+  const response = await fetch(`https://dloh.herokuapp.com/Armory/${itemId}`, {
     headers: {
       Authorization: `Token ${localStorage.getItem("dloh_token")}`,
     },
-  }).then((response) => response.json());
-};
-
-export const GetArmoryItem = (itemId) => {
-  return fetch(`https://dloh.herokuapp.com/Armory/${itemId}`, {
-    headers: {
-      Authorization: `Token ${localStorage.getItem("dloh_token")}`,
-    },
-  }).then((response) => response.json);
+  });
+  return response.json;
 };
 
 export const StatsEnum = [
