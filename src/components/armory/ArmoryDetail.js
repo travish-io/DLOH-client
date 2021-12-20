@@ -13,7 +13,7 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
   // const { itemHash } = useParams();
 
   useEffect(() => {
-    GetArmoryItemDetails(itemHash).then((data) => setItem(data));
+    GetArmoryItemDetails(itemHash.itemHash).then((data) => setItem(data));
     itemPerkDefinitions().then((data) => setPerkDefinitions(data));
   }, [itemHash]);
 
