@@ -6,7 +6,7 @@ import {
   StatsEnum,
 } from "./ArmoryManager";
 import "./Armory.css";
-import { AiOutlineClose } from "./react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
   const [item, setItem] = useState({});
