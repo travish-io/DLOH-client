@@ -24,7 +24,7 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
         <h3>{item?.Response?.displayProperties?.name}</h3>
         <button
           onClick={() => {
-            setToggleDetail(!toggleDetail);
+            setToggleDetail(false);
           }}
         >
           Close
