@@ -7,13 +7,13 @@ import {
 } from "./ArmoryManager";
 import "./Armory.css";
 
-export const ArmoryDetail = (itemHash, closeDetail) => {
+export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   const [item, setItem] = useState({});
   const [perkDefinitions, setPerkDefinitions] = useState([]);
   // const { itemHash } = useParams();
 
   useEffect(() => {
-    GetArmoryItemDetails(itemHash.itemHash).then((data) => setItem(data));
+    GetArmoryItemDetails(itemHash).then((data) => setItem(data));
     itemPerkDefinitions().then((data) => setPerkDefinitions(data));
   }, []);
 
