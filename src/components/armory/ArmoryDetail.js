@@ -15,10 +15,11 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
   useEffect(() => {
     GetArmoryItemDetails(itemHash).then((data) => setItem(data));
     itemPerkDefinitions().then((data) => setPerkDefinitions(data));
-  }, []);
+  }, [itemHash]);
 
   return (
     <div>
+      {console.log(itemHash)}
       <h3>{item?.Response?.displayProperties?.name}</h3>
       <img
         src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
