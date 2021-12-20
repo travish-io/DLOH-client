@@ -24,7 +24,7 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
       <div>
         <h3>{item?.Response?.displayProperties?.name}</h3>
         <button onClick={setToggleDetail(!toggleDetail)}>
-          {AiOutlineClose}
+          {<AiOutlineClose size="50" />}
         </button>
       </div>
       <img
