@@ -6,7 +6,7 @@ import {
   StatsEnum,
 } from "./ArmoryManager";
 import "./Armory.css";
-import { OutlineClose } from "./react-icons/Ai";
+import { AiOutlineClose } from "./react-icons/ai";
 
 export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
   const [item, setItem] = useState({});
@@ -23,7 +23,9 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
       {console.log(itemHash)}
       <div>
         <h3>{item?.Response?.displayProperties?.name}</h3>
-        <button onClick={setToggleDetail(!toggleDetail)}>{OutlineClose}</button>
+        <button onClick={setToggleDetail(!toggleDetail)}>
+          {AiOutlineClose}
+        </button>
       </div>
       <img
         src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
