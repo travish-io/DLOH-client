@@ -8,6 +8,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   const [items, setItems] = useState([]);
   const [search, updateSearch] = useState("");
   const ref = useRef();
+  const itemHash = useRef();
   const [toggleDetail, setToggleDetail] = useState(false);
   const history = useHistory();
 
@@ -46,11 +47,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   );
   const ArmoryItem = ({ icon, hash, id, name }) => (
     <div id={id} key={hash}>
-      <Link
-        to={`/Armory/${hash}`}
-        id={id}
-        onClick={setToggleDetail(!toggleDetail)}
-      >
+      <Link to={"#"} id={id} onClick={setToggleDetail(!toggleDetail)}>
         <img
           src={`https://www.bungie.net${icon}`}
           className="armory-item-icon"
@@ -76,7 +73,17 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
           }}
         ></input>
       </div>
-      <div>{toggleDetail ? <ArmoryDetail /> : ""}</div>
+      <div>
+        {toggleDetail ? (
+          <ArmoryDetail
+            itemHash={itemHash}
+            toggleDetail={toggleDetail}
+            setToggleDetail={setToggleDetail}
+          />
+        ) : (
+          ""
+        )}
+      </div>
       <div className="search-results-container">
         <div className="search-results">
           {history.location.pathname !== "/Armory"
@@ -101,6 +108,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
                       hash={i.item_hash}
                       id={i.id}
                       name={i.name}
+                      ref={i.item_hash}
                     />
                   );
                 })
