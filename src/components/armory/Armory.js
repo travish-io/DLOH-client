@@ -7,9 +7,9 @@ import "./Armory.css";
 export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   const [items, setItems] = useState([]);
   const [search, updateSearch] = useState("");
-  const ref = useRef();
-  const itemHash = useRef();
   const [toggleDetail, setToggleDetail] = useState(false);
+  const ref = useRef();
+  let itemHash = useRef();
   const history = useHistory();
 
   useEffect(() => {
@@ -47,7 +47,14 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   );
   const ArmoryItem = ({ icon, hash, id, name }) => (
     <div id={id} key={hash}>
-      <Link to={"#"} id={id} onClick={setToggleDetail(!toggleDetail)}>
+      <Link
+        to={{}}
+        id={id}
+        onClick={() => {
+          setToggleDetail(!toggleDetail);
+          itemHash = hash;
+        }}
+      >
         <img
           src={`https://www.bungie.net${icon}`}
           className="armory-item-icon"
@@ -108,7 +115,6 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
                       hash={i.item_hash}
                       id={i.id}
                       name={i.name}
-                      ref={i.item_hash}
                     />
                   );
                 })
