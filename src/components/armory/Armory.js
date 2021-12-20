@@ -83,7 +83,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
         {toggleDetail ? (
           <ArmoryDetail
             itemHash={itemHash}
-            // toggleDetail={toggleDetail}
+            toggleDetail={toggleDetail}
             setToggleDetail={setToggleDetail}
           />
         ) : (

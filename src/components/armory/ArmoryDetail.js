@@ -7,7 +7,7 @@ import {
 } from "./ArmoryManager";
 import "./Armory.css";
 
-export const ArmoryDetail = (itemHash, setToggleDetail) => {
+export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
   const [item, setItem] = useState({});
   const [perkDefinitions, setPerkDefinitions] = useState([]);
   // const { itemHash } = useParams();
@@ -24,7 +24,8 @@ export const ArmoryDetail = (itemHash, setToggleDetail) => {
         <h3>{item?.Response?.displayProperties?.name}</h3>
         <button
           onClick={() => {
-            return setToggleDetail(false);
+            setToggleDetail(false);
+            return toggleDetail;
           }}
         >
           Close
