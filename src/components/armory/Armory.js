@@ -7,9 +7,9 @@ import "./Armory.css";
 export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   const [items, setItems] = useState([]);
   const [search, updateSearch] = useState("");
+  const [itemHash, setItemHash] = useState(0);
   const [toggleDetail, setToggleDetail] = useState(false);
   const ref = useRef();
-  let itemHash = useRef();
   const history = useHistory();
 
   useEffect(() => {
@@ -47,12 +47,11 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   );
   const ArmoryItem = ({ icon, hash, id, name }) => (
     <div id={id} key={hash}>
-      <Link
-        to={{}}
+      <button
         id={id}
         onClick={() => {
+          setItemHash(hash);
           setToggleDetail(!toggleDetail);
-          itemHash = hash;
         }}
       >
         <img
@@ -60,7 +59,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
           className="armory-item-icon"
           alt={name}
         />
-      </Link>
+      </button>
       {/* <span className="item-tooltip">
           {name} Details
       </span> */}
