@@ -7,7 +7,7 @@ import {
 } from "./ArmoryManager";
 import "./Armory.css";
 
-export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
+export const ArmoryDetail = (itemHash, setToggleDetail) => {
   const [item, setItem] = useState({});
   const [perkDefinitions, setPerkDefinitions] = useState([]);
   // const { itemHash } = useParams();
