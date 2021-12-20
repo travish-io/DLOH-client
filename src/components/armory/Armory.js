@@ -7,7 +7,7 @@ import "./Armory.css";
 export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
   const [items, setItems] = useState([]);
   const [search, updateSearch] = useState("");
-  const [itemHash, setItemHash] = useState(0);
+  const [itemHash, setItemHash] = useState("");
   const [toggleDetail, setToggleDetail] = useState(false);
   const ref = useRef();
   const history = useHistory();
@@ -51,7 +51,7 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
         id={id}
         onClick={() => {
           setItemHash(hash);
-          setToggleDetail(!toggleDetail);
+          setToggleDetail(true);
         }}
       >
         <img

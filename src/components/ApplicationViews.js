@@ -11,9 +11,9 @@ export const ApplicationViews = () => {
       <Route exact path="/Armory">
         <Armory />
       </Route>
-      <Route path="/Armory/:itemHash(\d+)">
+      {/* <Route path="/Armory/:itemHash(\d+)">
         <ArmoryDetail />
-      </Route>
+      </Route> */}
       <Route exact path="/Loadouts">
         <Loadouts />
       </Route>
