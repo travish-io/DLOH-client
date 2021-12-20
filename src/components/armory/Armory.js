@@ -16,6 +16,10 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
     ArmorySearch(search).then((data) => setItems(data));
   }, [search]);
 
+  const closeDetail = () => {
+    setToggleDetail(false);
+  };
+
   const LoadoutItem = ({ icon, hash, id, name, bucket }) => (
     <div id={id} key={hash} className="item-container">
       <button
@@ -83,8 +87,9 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
         {toggleDetail ? (
           <ArmoryDetail
             itemHash={itemHash}
-            toggleDetail={toggleDetail}
-            setToggleDetail={setToggleDetail}
+            // toggleDetail={toggleDetail}
+            // setToggleDetail={setToggleDetail}
+            closeDetail={closeDetail}
           />
         ) : (
           ""

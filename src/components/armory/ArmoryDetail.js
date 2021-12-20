@@ -7,7 +7,7 @@ import {
 } from "./ArmoryManager";
 import "./Armory.css";
 
-export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
+export const ArmoryDetail = (itemHash, closeDetail) => {
   const [item, setItem] = useState({});
   const [perkDefinitions, setPerkDefinitions] = useState([]);
   // const { itemHash } = useParams();
@@ -22,7 +22,7 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
       {console.log(itemHash)}
       <div>
         <h3>{item?.Response?.displayProperties?.name}</h3>
-        <button onClick={() => setToggleDetail(!toggleDetail)}>Close</button>
+        <button onClick={() => closeDetail()}>Close</button>
       </div>
       <img
         src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
