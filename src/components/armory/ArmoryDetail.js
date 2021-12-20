@@ -22,7 +22,7 @@ export const ArmoryDetail = (itemHash, toggleDetail, setToggleDetail) => {
       {console.log(itemHash)}
       <div>
         <h3>{item?.Response?.displayProperties?.name}</h3>
-        <button onClick={setToggleDetail(!toggleDetail)}>Close</button>
+        <button onClick={() => setToggleDetail(!toggleDetail)}>Close</button>
       </div>
       <img
         src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
