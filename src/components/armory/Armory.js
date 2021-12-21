@@ -24,7 +24,7 @@ export const Armory = ({
     setToggleDetail(false);
   };
 
-  const ArmoryItem = ({ icon, hash, id, name, bucket_hash }) => (
+  const ArmoryItem = ({ icon, hash, id, name, bucket_hash, type }) => (
     <div id={id} key={hash} className="item-container">
       <img
         src={`https://www.bungie.net${icon}`}
@@ -33,13 +33,30 @@ export const Armory = ({
         id={id}
         onDragStart={() => {
           if (history.location.pathname !== "/Armory") {
-            newItemObj.current = {
-              icon: icon,
-              hash: hash,
-              id: id,
-              name: name,
-              bucket_hash: bucket_hash,
-            };
+            if (
+              type === "Exotic Helmet" ||
+              type === "Exotic Leg Armor" ||
+              type === "Exotic Gauntlets" ||
+              type === "Exotic Chest Armor"
+            ) {
+              newItemObj.current = {
+                icon: icon,
+                hash: hash,
+                id: id,
+                name: name,
+                bucket_hash: bucket_hash,
+                type: "Exotic Armor",
+              };
+            } else {
+              newItemObj.current = {
+                icon: icon,
+                hash: hash,
+                id: id,
+                name: name,
+                bucket_hash: bucket_hash,
+                type: type,
+              };
+            }
           }
         }}
         onClick={() => {
@@ -82,6 +99,7 @@ export const Armory = ({
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
+                  type={i.item_type_tier_name}
                 />
               );
             })
