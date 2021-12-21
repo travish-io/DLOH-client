@@ -4,7 +4,11 @@ import { ArmorySearch } from "./ArmoryManager";
 import { ArmoryDetail } from "./ArmoryDetail";
 import "./Armory.css";
 
-export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
+export const Armory = ({
+  loadoutItemsList,
+  setLoadoutItemsList,
+  newItemObj,
+}) => {
   const [items, setItems] = useState([]);
   const [search, updateSearch] = useState("");
   const [itemHash, setItemHash] = useState("");
@@ -20,39 +24,11 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
     setToggleDetail(false);
   };
 
-  const LoadoutItem = ({ icon, hash, id, name, bucket }) => (
+  const ArmoryItem = ({ icon, hash, id, name, bucket_hash }) => (
     <div id={id} key={hash} className="item-container">
       <button
-        // type={"checkbox"}
         className="item-checkbox"
-        id={id}
-        onClick={() => {
-          const newItemObj = {
-            icon: icon,
-            hash: hash,
-            id: id,
-            name: name,
-            bucket: bucket,
-          };
-          return setLoadoutItemsList((loadoutItemsList) => [
-            ...loadoutItemsList,
-            newItemObj,
-          ]);
-        }}
-      >
-        <img
-          src={`https://www.bungie.net${icon}`}
-          className="armory-item-icon"
-          alt={name}
-          id={id}
-        />
-      </button>
-    </div>
-  );
-  const ArmoryItem = ({ icon, hash, id, name }) => (
-    <div id={id} key={hash}>
-      <button
-        id={id}
+        id={bucket_hash}
         onClick={() => {
           setItemHash(hash);
           setToggleDetail(true);
@@ -62,13 +38,28 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
           src={`https://www.bungie.net${icon}`}
           className="armory-item-icon"
           alt={name}
+          id={id}
+          onDragStart={() => {
+            if (history.location.pathname !== "/Armory") {
+              newItemObj.current = {
+                icon: icon,
+                hash: hash,
+                id: id,
+                name: name,
+                bucket_hash: bucket_hash,
+              };
+            }
+          }}
+          onDrag={() => {
+            if (history.location.pathname !== "/Armory") {
+              console.log(newItemObj.current);
+            }
+          }}
         />
       </button>
-      {/* <span className="item-tooltip">
-          {name} Details
-      </span> */}
     </div>
   );
+
   return (
     <div>
       <div className="search-container">
@@ -85,65 +76,60 @@ export const Armory = ({ loadoutItemsList, setLoadoutItemsList }) => {
       </div>
       <div>
         {toggleDetail ? (
-          <ArmoryDetail
-            itemHash={itemHash}
-            // toggleDetail={toggleDetail}
-            // setToggleDetail={setToggleDetail}
-            closeDetail={closeDetail}
-          />
+          <ArmoryDetail itemHash={itemHash} closeDetail={closeDetail} />
         ) : (
           ""
         )}
       </div>
       <div className="search-results-container">
         <div className="search-results">
-          {history.location.pathname !== "/Armory"
-            ? items
-                .map((i) => {
-                  return (
-                    <LoadoutItem
-                      icon={i.icon}
-                      hash={i.item_hash}
-                      id={i.id}
-                      name={i.name}
-                      bucket={i.bucket_hash}
-                    />
-                  );
-                })
-                .reverse()
-            : items
-                .map((i) => {
-                  return (
-                    <ArmoryItem
-                      icon={i.icon}
-                      hash={i.item_hash}
-                      id={i.id}
-                      name={i.name}
-                    />
-                  );
-                })
-                .reverse()}
+          {items
+            .map((i) => {
+              return (
+                <ArmoryItem
+                  icon={i.icon}
+                  hash={i.item_hash}
+                  id={i.id}
+                  name={i.name}
+                  bucket_hash={i.bucket_hash}
+                />
+              );
+            })
+            .reverse()}
         </div>
       </div>
     </div>
   );
 };
 
-// <div
-//   className="armory-item-icon"
-//   key={i.id}
-//   id={i.item_hash}
-//   onClick={(evt) => {
-//     console.log(evt.target.id);
-//   }}
-// >
-//   {/* <Link
-//   to={`/${i.item_hash}`}
-//    id={i.id}> */}
-//   <img
-//     src={`https://www.bungie.net${i.icon}`}
-//     className="icon"
-//     alt={i.name}
-//   />
-//   {/* </Link> */}
-// </div>
+// const ArmoryItem = ({ icon, hash, id, name }) => (
+//   <div id={id} key={hash}>
+//     <button
+//       id={id}
+//       onClick={() => {
+//         setItemHash(hash);
+//         setToggleDetail(true);
+//       }}
+//     >
+//       <img
+//         src={`https://www.bungie.net${icon}`}
+//         className="armory-item-icon"
+//         alt={name}
+//       />
+//     </button>
+//     {/* <span className="item-tooltip">
+//         {name} Details
+//     </span> */}
+//   </div>
+// );
+// const newItemObj = {
+//   icon: icon,
+//   hash: hash,
+//   id: id,
+//   name: name,
+//   bucket: bucket,
+// };
+// return setLoadoutItemsList((loadoutItemsList) => [
+//   ...loadoutItemsList,
+//   newItemObj,
+// ]);
