@@ -20,7 +20,7 @@ export const CreateLoadout = () => {
     }
   }, []);
 
-  const LoadoutItem = ({ icon, hash, id, name, bucket_hash }) => (
+  const LoadoutItem = ({ icon, hash, id, name, bucket_hash, type }) => (
     <div id={bucket_hash} key={id} className="item-container">
       <img
         src={`https://www.bungie.net${icon}`}
@@ -52,8 +52,13 @@ export const CreateLoadout = () => {
         onDrop={(e) => {
           e.preventDefault();
           for (var { bucket_hash: x } of loadoutItemsList) {
-            if (x === newItemObj.current.bucket_hash) {
-              return window.alert("That item slot has already been filled.");
+            for (var { type: y } of loadoutItemsList) {
+              if (
+                x === newItemObj.current.bucket_hash ||
+                y === newItemObj.current.type
+              ) {
+                return window.alert("That item slot has already been filled.");
+              }
             }
           }
           return setLoadoutItemsList((loadoutItemsList) => [
@@ -81,6 +86,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
+                  type={i.type}
                 />
               );
             }
@@ -106,6 +112,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
+                  type={i.type}
                 />
               );
             }
@@ -131,6 +138,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
+                  type={i.type}
                 />
               );
             }
@@ -148,11 +156,7 @@ export const CreateLoadout = () => {
           id="exoticArmorSlot"
         >
           {loadoutItemsList.map((i) => {
-            if (
-              i.bucket_hash != "953998645" &&
-              i.bucket_hash != "2465295065" &&
-              i.bucket_hash != "1498876634"
-            ) {
+            if (i.type === "Exotic Armor") {
               return (
                 <LoadoutItem
                   icon={i.icon}
@@ -160,6 +164,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
+                  type={i.type}
                 />
               );
             }
