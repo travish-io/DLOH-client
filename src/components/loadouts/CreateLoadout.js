@@ -55,8 +55,8 @@ export const CreateLoadout = () => {
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => {
           e.preventDefault();
-          for (var { bucket: x } of loadoutItemsList) {
-            if (x === newItemObj.current.bucket) {
+          for (var { bucket_hash: x } of loadoutItemsList) {
+            if (x === newItemObj.current.bucket_hash) {
               return window.alert("That item slot has already been filled.");
             }
           }
