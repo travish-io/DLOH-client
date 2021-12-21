@@ -6,10 +6,15 @@
 }
 
 .armory-item-icon {
-  box-shadow: 1px 10px 20px darkslateblue;
   transition: 0s 10s;
 }
-
+.armory-item-icon-dimmed {
+  box-shadow: 1px 10px 20px darkslateblue;
+  transition: 0s 10s;
+  background-color: dimgray;
+  color: dimgray;
+  opacity: 90%;
+}
 .search-container {
   display: flex;
   /* margin-bottom: 1rem; */
@@ -23,22 +28,39 @@
 
 .icon {
   height: 100%;
+  width: 100%;
 }
 
 .item-container {
-  position: relative;
+  box-shadow: 1px 10px 20px darkslateblue;
+  width: 96px;
+  height: 96px;
 }
 
-.item-checkbox {
-  /* position: absolute; */
-  /* transform: translateX(80px);
-  width: 16px;
-  height: 16px; */
-  border-color: white;
+.item-btn {
+  border-color: darkslateblue;
+  box-shadow: none;
+  border: none;
+  cursor: grab;
+  opacity: 100%;
+}
+.new-item-btn {
+  border-color: darkslateblue;
   box-shadow: none;
   border: none;
   cursor: pointer;
+  opacity: 100%;
 }
+
+.item-dimmed {
+  border-color: none;
+  box-shadow: none;
+  border: none;
+  cursor: grab;
+  opacity: 100%;
+  opacity: 50%;
+}
+
 /* .item-tooltip {
   display: none;
   transition: all 0s ease 1s;
