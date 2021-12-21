@@ -37,3 +37,11 @@
   text-align: center;
   font-weight: 600;
 }
+.armory-item-icon {
+  box-shadow: 1px 10px 20px darkslateblue;
+  transition: 0s 10s;
+}
+
+.item-container {
+  cursor: pointer;
+}

@@ -26,37 +26,27 @@ export const Armory = ({
 
   const ArmoryItem = ({ icon, hash, id, name, bucket_hash }) => (
     <div id={id} key={hash} className="item-container">
-      <button
-        className="item-checkbox"
-        id={bucket_hash}
+      <img
+        src={`https://www.bungie.net${icon}`}
+        className="armory-item-icon"
+        alt={name}
+        id={id}
+        onDragStart={() => {
+          if (history.location.pathname !== "/Armory") {
+            newItemObj.current = {
+              icon: icon,
+              hash: hash,
+              id: id,
+              name: name,
+              bucket_hash: bucket_hash,
+            };
+          }
+        }}
         onClick={() => {
           setItemHash(hash);
           setToggleDetail(true);
         }}
-      >
-        <img
-          src={`https://www.bungie.net${icon}`}
-          className="armory-item-icon"
-          alt={name}
-          id={id}
-          onDragStart={() => {
-            if (history.location.pathname !== "/Armory") {
-              newItemObj.current = {
-                icon: icon,
-                hash: hash,
-                id: id,
-                name: name,
-                bucket_hash: bucket_hash,
-              };
-            }
-          }}
-          onDrag={() => {
-            if (history.location.pathname !== "/Armory") {
-              console.log(newItemObj.current);
-            }
-          }}
-        />
-      </button>
+      />
     </div>
   );
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Armory } from "../armory/Armory";
 import { Create, editLoadout, GetLoadout, GetLoadouts } from "./LoadoutManager";
+import "./Loadouts.css";
 
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
@@ -21,8 +22,10 @@ export const CreateLoadout = () => {
 
   const LoadoutItem = ({ icon, hash, id, name, bucket_hash }) => (
     <div id={bucket_hash} key={id} className="item-container">
-      <button
-        className="item-checkbox"
+      <img
+        src={`https://www.bungie.net${icon}`}
+        className="armory-item-icon"
+        alt={name}
         id={id}
         onClick={(evt) => {
           setLoadoutItemsList(
@@ -31,14 +34,7 @@ export const CreateLoadout = () => {
             )
           );
         }}
-      >
-        <img
-          src={`https://www.bungie.net${icon}`}
-          className="armory-item-icon"
-          alt={name}
-          id={id}
-        />
-      </button>
+      />
     </div>
   );
 
