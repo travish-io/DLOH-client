@@ -45,7 +45,6 @@ export const Create = (list) => {
 };
 
 export const editLoadout = (loadoutId, list) => {
-  // refactor create fn
   let newList = [];
 
   let name = prompt("Name your Loadout", "");

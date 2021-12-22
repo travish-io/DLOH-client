@@ -32,6 +32,7 @@ export const Armory = ({
         alt={name}
         id={id}
         onDragStart={() => {
+          // debugger;
           if (history.location.pathname !== "/Armory") {
             if (
               type === "Exotic Helmet" ||
@@ -109,35 +110,3 @@ export const Armory = ({
     </div>
   );
 };
-
-// const ArmoryItem = ({ icon, hash, id, name }) => (
-//   <div id={id} key={hash}>
-//     <button
-//       id={id}
-//       onClick={() => {
-//         setItemHash(hash);
-//         setToggleDetail(true);
-//       }}
-//     >
-//       <img
-//         src={`https://www.bungie.net${icon}`}
-//         className="armory-item-icon"
-//         alt={name}
-//       />
-//     </button>
-//     {/* <span className="item-tooltip">
-//         {name} Details
-//     </span> */}
-//   </div>
-// );
-// const newItemObj = {
-//   icon: icon,
-//   hash: hash,
-//   id: id,
-//   name: name,
-//   bucket: bucket,
-// };
-// return setLoadoutItemsList((loadoutItemsList) => [
-//   ...loadoutItemsList,
-//   newItemObj,
-// ]);

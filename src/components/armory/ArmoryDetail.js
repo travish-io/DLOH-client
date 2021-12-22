@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
 import {
   GetArmoryItemDetails,
   itemPerkDefinitions,
@@ -10,7 +9,6 @@ import "./Armory.css";
 export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   const [item, setItem] = useState({});
   const [perkDefinitions, setPerkDefinitions] = useState([]);
-  // const { itemHash } = useParams();
 
   useEffect(() => {
     GetArmoryItemDetails(itemHash).then((data) => setItem(data));
