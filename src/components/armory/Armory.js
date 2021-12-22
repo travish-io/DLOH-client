@@ -25,7 +25,7 @@ export const Armory = ({
   };
 
   const ArmoryItem = ({ icon, hash, id, name, bucket_hash, type }) => (
-    <div id={id} key={hash} className="item-container">
+    <div id={id} key={id} className="item-container">
       <img
         src={`https://www.bungie.net${icon}`}
         className="armory-item-icon"

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import "./Loadouts.css";
 import { Armory } from "../armory/Armory";
 import { Create, editLoadout, GetLoadout, GetLoadouts } from "./LoadoutManager";
-import "./Loadouts.css";
 
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
@@ -42,11 +42,6 @@ export const CreateLoadout = () => {
     <div>
       <div
         className="new-loadout-container"
-        style={{
-          border: "1px black solid",
-          display: "flex",
-          justifyContent: "center",
-        }}
         draggable="true"
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => {
@@ -72,18 +67,9 @@ export const CreateLoadout = () => {
           ]);
         }}
       >
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="1498876634"
-        >
+        <div className="new-item-container" id="1498876634">
           {loadoutItemsList.map((i) => {
-            if (i.bucket_hash == "1498876634") {
+            if (i.bucket_hash === 1498876634) {
               return (
                 <LoadoutItem
                   icon={i.icon}
@@ -98,18 +84,9 @@ export const CreateLoadout = () => {
           })}
           Kinetic Weapon Slot
         </div>
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="2465295065"
-        >
+        <div className="new-item-container" id="2465295065">
           {loadoutItemsList.map((i) => {
-            if (i.bucket_hash == "2465295065") {
+            if (i.bucket_hash === 2465295065) {
               return (
                 <LoadoutItem
                   icon={i.icon}
@@ -124,18 +101,9 @@ export const CreateLoadout = () => {
           })}
           Energy Weapon Slot
         </div>
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="953998645"
-        >
+        <div className="new-item-container" id="953998645">
           {loadoutItemsList.map((i) => {
-            if (i.bucket_hash == "953998645") {
+            if (i.bucket_hash === 953998645) {
               console.log(i);
               console.log(loadoutItemsList);
               return (
@@ -152,16 +120,7 @@ export const CreateLoadout = () => {
           })}
           Heavy Weapon Slot
         </div>
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="exoticArmorSlot"
-        >
+        <div className="new-item-container" id="exoticArmorSlot">
           {history.location.pathname === `/Loadouts/Edit/${loadoutId}`
             ? loadoutItemsList.map((i) => {
                 if (

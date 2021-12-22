@@ -45,3 +45,17 @@
 .item-container {
   cursor: pointer;
 }
+
+.new-loadout-container {
+  display: flex;
+  justify-content: center;
+  border: 1px black solid;
+}
+
+.new-item-container {
+  display: flex;
+  width: 96px;
+  height: 96px;
+  border: solid 1px black;
+  margin: 2rem;
+}
