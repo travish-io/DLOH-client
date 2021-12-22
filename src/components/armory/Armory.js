@@ -32,6 +32,7 @@ export const Armory = ({
         alt={name}
         id={id}
         onDragStart={() => {
+          // debugger;
           if (history.location.pathname !== "/Armory") {
             if (
               type === "Exotic Helmet" ||

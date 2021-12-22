@@ -51,6 +51,11 @@ export const CreateLoadout = () => {
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => {
           e.preventDefault();
+          console.log(loadoutItemsList);
+          console.log(newItemObj.current.type);
+          if (loadoutItemsList.length >= 4) {
+            return window.alert("All item slots are full.");
+          }
           for (var { bucket_hash: x } of loadoutItemsList) {
             for (var { type: y } of loadoutItemsList) {
               if (
@@ -86,7 +91,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
-                  type={i.type}
+                  type={i.item_type_tier_name}
                 />
               );
             }
@@ -112,7 +117,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
-                  type={i.type}
+                  type={i.item_type_tier_name}
                 />
               );
             }
@@ -131,6 +136,8 @@ export const CreateLoadout = () => {
         >
           {loadoutItemsList.map((i) => {
             if (i.bucket_hash == "953998645") {
+              console.log(i);
+              console.log(loadoutItemsList);
               return (
                 <LoadoutItem
                   icon={i.icon}
@@ -138,7 +145,7 @@ export const CreateLoadout = () => {
                   id={i.id}
                   name={i.name}
                   bucket_hash={i.bucket_hash}
-                  type={i.type}
+                  type={i.item_type_tier_name}
                 />
               );
             }
@@ -155,20 +162,41 @@ export const CreateLoadout = () => {
           }}
           id="exoticArmorSlot"
         >
-          {loadoutItemsList.map((i) => {
-            if (i.type === "Exotic Armor") {
-              return (
-                <LoadoutItem
-                  icon={i.icon}
-                  hash={i.item_hash}
-                  id={i.id}
-                  name={i.name}
-                  bucket_hash={i.bucket_hash}
-                  type={i.type}
-                />
-              );
-            }
-          })}
+          {history.location.pathname === `/Loadouts/Edit/${loadoutId}`
+            ? loadoutItemsList.map((i) => {
+                if (
+                  i.type === "Exotic Armor" ||
+                  i.item_type_tier_name === "Exotic Helmet" ||
+                  i.item_type_tier_name === "Exotic Leg Armor" ||
+                  i.item_type_tier_name === "Exotic Gauntlets" ||
+                  i.item_type_tier_name === "Exotic Chest Armor"
+                ) {
+                  return (
+                    <LoadoutItem
+                      icon={i.icon}
+                      hash={i.item_hash}
+                      id={i.id}
+                      name={i.name}
+                      bucket_hash={i.bucket_hash}
+                      type={i.item_type_tier_name}
+                    />
+                  );
+                }
+              })
+            : loadoutItemsList.map((i) => {
+                if (i.type === "Exotic Armor") {
+                  return (
+                    <LoadoutItem
+                      icon={i.icon}
+                      hash={i.item_hash}
+                      id={i.id}
+                      name={i.name}
+                      bucket_hash={i.bucket_hash}
+                      type={i.item_type_tier_name}
+                    />
+                  );
+                }
+              })}
           Exotic Armor Slot
         </div>
         <div>
