@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Armory } from "../armory/Armory";
 import { Create, editLoadout, GetLoadout, GetLoadouts } from "./LoadoutManager";
 import "./Loadouts.css";
@@ -199,38 +199,7 @@ export const CreateLoadout = () => {
               })}
           Exotic Armor Slot
         </div>
-        <div>
-          {/* {loadoutItemsList?.length > 0
-            ? loadoutItemsList?.map((item) => {
-                return (
-                  <div
-                    id={item?.bucket}
-                    key={item?.id}
-                    className="item-container"
-                  >
-                    <button
-                      className="item-checkbox"
-                      id={item?.id}
-                      onClick={(evt) => {
-                        setLoadoutItemsList(
-                          loadoutItemsList.filter(
-                            (item) => item?.id !== parseInt(evt.target.id)
-                          )
-                        );
-                      }}
-                    >
-                      <img
-                        src={`https://www.bungie.net${item?.icon}`}
-                        className="armory-item-icon"
-                        alt={item?.name}
-                        id={item?.id}
-                      />
-                    </button>
-                  </div>
-                );
-              })
-            : ""} */}
-        </div>
+
         <div>
           {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
             <button
