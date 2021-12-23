@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin: 3rem;
+  margin: 6rem;
 }
 
 .armory-item-icon {
@@ -15,10 +15,10 @@
   color: dimgray;
   opacity: 90%;
 }
-.search-container {
+/* .search-container {
   display: flex;
-  /* margin-bottom: 1rem; */
-}
+
+} */
 
 .armory-searchbar {
   width: 33%;

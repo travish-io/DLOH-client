@@ -31,6 +31,7 @@ export const Armory = ({
         className="armory-item-icon"
         alt={name}
         id={id}
+        key={id}
         onDragStart={() => {
           // debugger;
           if (history.location.pathname !== "/Armory") {
@@ -69,42 +70,44 @@ export const Armory = ({
   );
 
   return (
-    <div>
-      <div className="search-container">
-        <input
-          className="armory-searchbar"
-          type="text"
-          placeholder="Search for items by name, type or rarity. Ex: 'Exotic Hand Cannon'"
-          ref={ref}
-          onChange={(evt) => {
-            evt.preventDefault();
-            updateSearch(ref.current.value);
-          }}
-        ></input>
-      </div>
-      <div>
-        {toggleDetail ? (
-          <ArmoryDetail itemHash={itemHash} closeDetail={closeDetail} />
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="search-results-container">
-        <div className="search-results">
-          {items
-            .map((i) => {
-              return (
-                <ArmoryItem
-                  icon={i.icon}
-                  hash={i.item_hash}
-                  id={i.id}
-                  name={i.name}
-                  bucket_hash={i.bucket_hash}
-                  type={i.item_type_tier_name}
-                />
-              );
-            })
-            .reverse()}
+    <div className="">
+      <div className="">
+        <div className="sticky top-14 left-0 right-0 flex">
+          <input
+            className="armory-searchbar"
+            type="text"
+            placeholder="Search for items by name, type or rarity. Ex: 'Exotic Hand Cannon'"
+            ref={ref}
+            onChange={(evt) => {
+              evt.preventDefault();
+              updateSearch(ref.current.value);
+            }}
+          ></input>
+        </div>
+        <div>
+          {toggleDetail ? (
+            <ArmoryDetail itemHash={itemHash} closeDetail={closeDetail} />
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="">
+          <div className="search-results">
+            {items
+              .map((i) => {
+                return (
+                  <ArmoryItem
+                    icon={i.icon}
+                    hash={i.item_hash}
+                    id={i.id}
+                    name={i.name}
+                    bucket_hash={i.bucket_hash}
+                    type={i.item_type_tier_name}
+                  />
+                );
+              })
+              .reverse()}
+          </div>
         </div>
       </div>
     </div>

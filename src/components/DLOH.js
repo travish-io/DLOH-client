@@ -4,6 +4,7 @@ import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { TailwindNav } from "./nav/TailwindNav";
 import "./DLOH.css";
 
 export const DLOH = () => (
@@ -14,7 +15,7 @@ export const DLOH = () => (
           return (
             <>
               <Route>
-                <NavBar />
+                <TailwindNav />
                 <ApplicationViews />
               </Route>
             </>
