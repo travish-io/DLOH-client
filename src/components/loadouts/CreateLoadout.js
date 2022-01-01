@@ -21,27 +21,25 @@ export const CreateLoadout = () => {
   }, []);
 
   const LoadoutItem = ({ icon, hash, id, name, bucket_hash, type }) => (
-    <div id={bucket_hash} key={id} className="item-container">
-      <img
-        src={`https://www.bungie.net${icon}`}
-        className="armory-item-icon"
-        alt={name}
-        id={id}
-        key={id}
-        onClick={(evt) => {
-          setLoadoutItemsList(
-            loadoutItemsList.filter(
-              (item) => item.id !== parseInt(evt.target.id)
-            )
-          );
-        }}
-      />
-    </div>
+    // <div id={bucket_hash} key={id} className="item-container">
+    <img
+      src={`https://www.bungie.net${icon}`}
+      className="armory-item-icon"
+      alt={name}
+      id={id}
+      key={id}
+      onClick={(evt) => {
+        setLoadoutItemsList(
+          loadoutItemsList.filter((item) => item.id !== parseInt(evt.target.id))
+        );
+      }}
+    />
+    // </div>
   );
 
   return (
     <div>
-      <div className="sticky top-14 left-0 right-0 m-6">
+      <div className="sticky top-0 lg:top-16 left-0 right-0 bg-white lg:mt-24">
         <div
           className="new-loadout-container"
           draggable="true"
@@ -162,31 +160,30 @@ export const CreateLoadout = () => {
                 })}
             Exotic Armor Slot
           </div>
-
-          <div>
-            {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
-              <button
-                onClick={() => {
-                  editLoadout(loadoutId, loadoutItemsList).then(
-                    history.push("/Loadouts")
-                  );
-                }}
-              >
-                Update Loadout
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  Create(loadoutItemsList);
-                  setLoadoutItemsList([]);
-                  GetLoadouts();
-                  history.push("/Loadouts");
-                }}
-              >
-                Save Loadout
-              </button>
-            )}
-          </div>
+        </div>
+        <div>
+          {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
+            <button
+              onClick={() => {
+                editLoadout(loadoutId, loadoutItemsList).then(
+                  history.push("/Loadouts")
+                );
+              }}
+            >
+              Update Loadout
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                Create(loadoutItemsList);
+                setLoadoutItemsList([]);
+                GetLoadouts();
+                history.push("/Loadouts");
+              }}
+            >
+              Save Loadout
+            </button>
+          )}
         </div>
       </div>
       <Armory

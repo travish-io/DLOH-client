@@ -6,13 +6,17 @@
 .container-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
+  /* margin-top: 6rem; */
 }
 
 .loadout-item {
   margin-bottom: 3px;
   width: 96px;
   height: 96px;
+}
+.loadout-img {
+  box-shadow: 1px 10px 20px darkslateblue;
 }
 .loadout-btns-container {
   /* margin-bottom: 3px; */
@@ -31,6 +35,7 @@
 }
 .loadout-item-name {
   font-size: small;
+  min-width: 63px;
 }
 .loadout-name {
   width: 96px;
@@ -40,16 +45,17 @@
 .armory-item-icon {
   box-shadow: 1px 10px 20px darkslateblue;
   transition: 0s 10s;
-}
-
-.item-container {
+  max-width: 96px;
   cursor: pointer;
 }
+
+/* .item-container {
+  cursor: pointer;
+} */
 
 .new-loadout-container {
   display: flex;
   justify-content: center;
-  border: 1px black solid;
 }
 
 .new-item-container {

@@ -25,3 +25,13 @@
     @apply fixed top-1/4 left-1/2;
   } */
 }
+
+body {
+  margin: 6rem;
+}
+
+@media (max-width: 1024px) {
+  body {
+    margin: 0 6rem;
+  }
+}

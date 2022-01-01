@@ -22,13 +22,11 @@ export const Loadouts = () => {
             {loadout?.destiny_items_list.map((i) => {
               return (
                 <div className="loadout-item" id={i.id}>
-                  <div
-                    className="loadout-item-icon"
-                    key={loadout.id}
-                    id={i.item_hash}
-                  >
-                    <img src={`https://www.bungie.net${i.icon}`} alt={i.name} />
-                  </div>
+                  <img
+                    className="loadout-img"
+                    src={`https://www.bungie.net${i.icon}`}
+                    alt={i.name}
+                  />
                   <div className="loadout-item-name">{i.name}</div>
                 </div>
               );

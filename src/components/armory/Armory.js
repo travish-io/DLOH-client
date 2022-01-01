@@ -32,6 +32,38 @@ export const Armory = ({
         alt={name}
         id={id}
         key={id}
+        onTou
+        onTouchStart={(e) => {
+          console.log("touch");
+          e.stopPropagation();
+
+          if (history.location.pathname !== "/Armory") {
+            if (
+              type === "Exotic Helmet" ||
+              type === "Exotic Leg Armor" ||
+              type === "Exotic Gauntlets" ||
+              type === "Exotic Chest Armor"
+            ) {
+              newItemObj.current = {
+                icon: icon,
+                hash: hash,
+                id: id,
+                name: name,
+                bucket_hash: bucket_hash,
+                type: "Exotic Armor",
+              };
+            } else {
+              newItemObj.current = {
+                icon: icon,
+                hash: hash,
+                id: id,
+                name: name,
+                bucket_hash: bucket_hash,
+                type: type,
+              };
+            }
+          }
+        }}
         onDragStart={() => {
           // debugger;
           if (history.location.pathname !== "/Armory") {
@@ -72,18 +104,34 @@ export const Armory = ({
   return (
     <div className="">
       <div className="">
-        <div className="sticky top-14 left-0 right-0 flex">
-          <input
-            className="armory-searchbar"
-            type="text"
-            placeholder="Search for items by name, type or rarity. Ex: 'Exotic Hand Cannon'"
-            ref={ref}
-            onChange={(evt) => {
-              evt.preventDefault();
-              updateSearch(ref.current.value);
-            }}
-          ></input>
-        </div>
+        {history.location.pathname !== "/Armory" ? (
+          <div className="sticky lg:top-14 top-36 left-0 right-0 flex justify-center">
+            <input
+              className="armory-searchbar"
+              type="text"
+              placeholder="Search for items by name, type or rarity. Ex: 'Exotic Hand Cannon'"
+              ref={ref}
+              onChange={(evt) => {
+                evt.preventDefault();
+                updateSearch(ref.current.value);
+              }}
+            ></input>
+          </div>
+        ) : (
+          <div className="sticky top-[0.5rem] lg:top-14 left-0 right-0 flex justify-center">
+            <input
+              className="armory-searchbar"
+              type="text"
+              placeholder="Search for items by name, type or rarity. Ex: 'Exotic Hand Cannon'"
+              ref={ref}
+              onChange={(evt) => {
+                evt.preventDefault();
+                updateSearch(ref.current.value);
+              }}
+            ></input>
+          </div>
+        )}
+
         <div>
           {toggleDetail ? (
             <ArmoryDetail itemHash={itemHash} closeDetail={closeDetail} />
