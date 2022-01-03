@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GiSwitchWeapon, GiSwordSmithing, GiBrutalHelm } from "react-icons/gi";
+import {
+  GiSwitchWeapon,
+  GiSwordSmithing,
+  GiBrutalHelm,
+  GiSwordsEmblem,
+} from "react-icons/gi";
 
 const NavBarIcon = ({ icon, link, text }) => (
   <div className="navbar-icon group">

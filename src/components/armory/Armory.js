@@ -25,87 +25,93 @@ export const Armory = ({
   };
 
   const ArmoryItem = ({ icon, hash, id, name, bucket_hash, type }) => (
-    <div id={id} key={id} className="item-container">
-      <img
-        src={`https://www.bungie.net${icon}`}
-        className="armory-item-icon"
-        alt={name}
-        id={id}
-        key={id}
-        onTou
-        onTouchStart={(e) => {
-          console.log("touch");
-          e.stopPropagation();
-
-          if (history.location.pathname !== "/Armory") {
-            if (
-              type === "Exotic Helmet" ||
-              type === "Exotic Leg Armor" ||
-              type === "Exotic Gauntlets" ||
-              type === "Exotic Chest Armor"
-            ) {
-              newItemObj.current = {
-                icon: icon,
-                hash: hash,
-                id: id,
-                name: name,
-                bucket_hash: bucket_hash,
-                type: "Exotic Armor",
-              };
-            } else {
-              newItemObj.current = {
-                icon: icon,
-                hash: hash,
-                id: id,
-                name: name,
-                bucket_hash: bucket_hash,
-                type: type,
-              };
-            }
+    <img
+      src={`https://www.bungie.net${icon}`}
+      className="armory-item-icon"
+      alt={name}
+      id={id}
+      key={id}
+      draggable="true"
+      onTouchStart={(e) => {
+        console.log("touch");
+        console.log(e.target.id);
+        // e.stopPropagation();
+      }}
+      onTouchMove={(e) => {
+        console.log("touch move");
+        e.stopPropagation();
+        document.body.style.overflow = "hidden";
+        if (history.location.pathname !== "/Armory") {
+          if (
+            type === "Exotic Helmet" ||
+            type === "Exotic Leg Armor" ||
+            type === "Exotic Gauntlets" ||
+            type === "Exotic Chest Armor"
+          ) {
+            newItemObj.current = {
+              icon: icon,
+              hash: hash,
+              id: id,
+              name: name,
+              bucket_hash: bucket_hash,
+              type: "Exotic Armor",
+            };
+          } else {
+            newItemObj.current = {
+              icon: icon,
+              hash: hash,
+              id: id,
+              name: name,
+              bucket_hash: bucket_hash,
+              type: type,
+            };
           }
-        }}
-        onDragStart={() => {
-          // debugger;
-          if (history.location.pathname !== "/Armory") {
-            if (
-              type === "Exotic Helmet" ||
-              type === "Exotic Leg Armor" ||
-              type === "Exotic Gauntlets" ||
-              type === "Exotic Chest Armor"
-            ) {
-              newItemObj.current = {
-                icon: icon,
-                hash: hash,
-                id: id,
-                name: name,
-                bucket_hash: bucket_hash,
-                type: "Exotic Armor",
-              };
-            } else {
-              newItemObj.current = {
-                icon: icon,
-                hash: hash,
-                id: id,
-                name: name,
-                bucket_hash: bucket_hash,
-                type: type,
-              };
-            }
+        }
+      }}
+      onTouchEnd={() => {
+        document.body.style.overflow = "auto";
+      }}
+      onDragStart={() => {
+        // debugger;
+        if (history.location.pathname !== "/Armory") {
+          if (
+            type === "Exotic Helmet" ||
+            type === "Exotic Leg Armor" ||
+            type === "Exotic Gauntlets" ||
+            type === "Exotic Chest Armor"
+          ) {
+            newItemObj.current = {
+              icon: icon,
+              hash: hash,
+              id: id,
+              name: name,
+              bucket_hash: bucket_hash,
+              type: "Exotic Armor",
+            };
+          } else {
+            newItemObj.current = {
+              icon: icon,
+              hash: hash,
+              id: id,
+              name: name,
+              bucket_hash: bucket_hash,
+              type: type,
+            };
           }
-        }}
-        onClick={() => {
-          setItemHash(hash);
-          setToggleDetail(true);
-        }}
-      />
-    </div>
+        }
+      }}
+      onClick={() => {
+        setItemHash(hash);
+        setToggleDetail(true);
+      }}
+    />
   );
 
   return (
     <div className="">
       <div className="">
         {history.location.pathname !== "/Armory" ? (
-          <div className="sticky lg:top-14 top-36 left-0 right-0 flex justify-center">
+          <div className="sticky lg:top-[12.5rem] top-36 left-0 right-0 flex justify-center">
             <input
               className="armory-searchbar"
               type="text"

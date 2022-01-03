@@ -44,10 +44,10 @@ export const Create = (list) => {
   );
 };
 
-export const editLoadout = (loadoutId, list) => {
+export const editLoadout = (loadoutId, list, loudoutName) => {
   let newList = [];
 
-  let name = prompt("Name your Loadout", "");
+  let name = prompt("Name your Loadout", loudoutName);
 
   if (name === null) return;
 

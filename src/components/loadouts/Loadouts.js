@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GetLoadouts, deleteLoadout } from "./LoadoutManager";
+import { BiEditAlt } from "react-icons/bi";
+import { MdDeleteForever } from "react-icons/md";
 import "./Loadouts.css";
 
 export const Loadouts = () => {
@@ -11,6 +13,15 @@ export const Loadouts = () => {
   useEffect(() => {
     GetLoadouts().then((data) => setLoadouts(data));
   }, []);
+
+  const LoadoutIcon = ({ icon, clicky, text }) => (
+    <div className="loadout-icon group">
+      <button onClick={clicky}>{icon}</button>
+      <span className="loadout-tooltip group-hover:scale-100">
+        <button onClick={clicky}>{text}</button>
+      </span>
+    </div>
+  );
 
   return (
     <div className="container-container">
@@ -32,25 +43,21 @@ export const Loadouts = () => {
               );
             })}
             <div className="loadout-btns-container">
-              <div className="loadout-btn">
-                <button
-                  onClick={() => {
-                    history.push(`/Loadouts/Edit/${loadout.id}`);
-                  }}
-                >
-                  Edit
-                </button>
-              </div>
-              <div className="loadout-btn">
-                <button
-                  onClick={() => {
-                    deleteLoadout(loadout.id);
-                    GetLoadouts().then((data) => setLoadouts(data));
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
+              <LoadoutIcon
+                icon={<BiEditAlt size="26" />}
+                clicky={() => {
+                  history.push(`/Loadouts/Edit/${loadout.id}`);
+                }}
+                text={"Edit Loadout"}
+              />
+              <LoadoutIcon
+                icon={<MdDeleteForever size="26" />}
+                clicky={() => {
+                  deleteLoadout(loadout.id);
+                  GetLoadouts().then((data) => setLoadouts(data));
+                }}
+                text={"Delete Loadout"}
+              />
             </div>
           </div>
         );

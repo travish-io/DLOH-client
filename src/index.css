@@ -20,6 +20,38 @@
     transition-all duration-100 scale-0 origin-left
     lg:text-green-600 lg:bg-white;
   }
+  .loadout-icon {
+    @apply relative flex items-center justify-center lg:flex-row h-12 w-12 mt-2 mb-2 mx-auto shadow-lg
+    bg-gray-800 text-green-500 rounded-3xl
+    hover:bg-green-600 hover:text-white
+    transition-all duration-700 ease-linear cursor-pointer;
+  }
+
+  .loadout-icon:hover {
+    @apply rounded-xl;
+  }
+
+  .loadout-tooltip {
+    @apply absolute flex items-baseline justify-center w-auto p-2 my-2 ml-0  min-w-max left-14 rounded-md shadow-md
+    text-white bg-gray-900 text-xs font-bold
+    transition-all duration-100 scale-0 origin-left;
+  }
+  .create-icon {
+    @apply relative flex items-center justify-center lg:flex-row h-12 w-12 mt-2 mb-2 mx-auto shadow-lg w-[25rem]
+    bg-gray-800 text-green-500 rounded-3xl
+    hover:bg-green-600 hover:text-white
+    transition-all duration-700 ease-linear cursor-pointer;
+  }
+
+  .create-icon:hover {
+    @apply rounded-xl;
+  }
+
+  .create-tooltip {
+    @apply absolute flex items-baseline justify-center w-auto p-2 my-2 ml-0  min-w-max left-14 rounded-md shadow-md
+    text-white bg-gray-900 text-xs font-bold
+    transition-all duration-100 scale-0 origin-left;
+  }
 
   /* .new-item-container {
     @apply fixed top-1/4 left-1/2;

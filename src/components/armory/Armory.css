@@ -10,6 +10,7 @@
   transition: 0s 10s;
   /* max-width: 100%;
   height: auto; */
+  scroll-behavior: none;
 }
 .armory-item-icon-dimmed {
   box-shadow: 1px 10px 20px darkslateblue;

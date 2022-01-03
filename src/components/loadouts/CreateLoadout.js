@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import "./Loadouts.css";
 import { Armory } from "../armory/Armory";
 import { Create, editLoadout, GetLoadout, GetLoadouts } from "./LoadoutManager";
+import { GiSwordsPower } from "react-icons/gi";
 
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
@@ -20,8 +21,16 @@ export const CreateLoadout = () => {
     }
   }, []);
 
+  const LoadoutIcon = ({ icon, clicky, text }) => (
+    <div className="create-icon group">
+      <button onClick={clicky}>{icon}</button>
+      <span className="create-tooltip group-hover:scale-100">
+        <button onClick={clicky}>{text}</button>
+      </span>
+    </div>
+  );
+
   const LoadoutItem = ({ icon, hash, id, name, bucket_hash, type }) => (
-    // <div id={bucket_hash} key={id} className="item-container">
     <img
       src={`https://www.bungie.net${icon}`}
       className="armory-item-icon"
@@ -34,7 +43,6 @@ export const CreateLoadout = () => {
         );
       }}
     />
-    // </div>
   );
 
   return (
@@ -44,6 +52,30 @@ export const CreateLoadout = () => {
           className="new-loadout-container"
           draggable="true"
           onDragOver={(e) => e.preventDefault()}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            console.log(loadoutItemsList);
+            console.log(newItemObj.current.type);
+            if (loadoutItemsList.length >= 4) {
+              return window.alert("All item slots are full.");
+            }
+            for (var { bucket_hash: x } of loadoutItemsList) {
+              for (var { type: y } of loadoutItemsList) {
+                if (
+                  x === newItemObj.current.bucket_hash ||
+                  y === newItemObj.current.type
+                ) {
+                  return window.alert(
+                    "That item slot has already been filled."
+                  );
+                }
+              }
+            }
+            return setLoadoutItemsList((loadoutItemsList) => [
+              ...loadoutItemsList,
+              newItemObj.current,
+            ]);
+          }}
           onDrop={(e) => {
             e.preventDefault();
             console.log(loadoutItemsList);
@@ -120,7 +152,18 @@ export const CreateLoadout = () => {
                 );
               }
             })}
-            Heavy Weapon Slot
+            {
+              <img
+                class="wp-image-3670 alignnone size-full entered lazyloaded"
+                src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-Heavy-ammo-e1597420989545.png"
+                alt="Destiny 2 Heavy ammo"
+                width="56"
+                height="56"
+                title="Destiny 2 Weapons Types: Understanding classes and slots"
+                data-lazy-src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-Heavy-ammo-e1597420989545.png"
+                data-ll-status="loaded"
+              ></img>
+            }
           </div>
           <div className="new-item-container" id="exoticArmorSlot">
             {history.location.pathname === `/Loadouts/Edit/${loadoutId}`
@@ -163,26 +206,26 @@ export const CreateLoadout = () => {
         </div>
         <div>
           {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
-            <button
-              onClick={() => {
-                editLoadout(loadoutId, loadoutItemsList).then(
+            <LoadoutIcon
+              icon={<GiSwordsPower size="26" />}
+              clicky={() => {
+                editLoadout(loadoutId, loadoutItemsList, loadout.name).then(
                   history.push("/Loadouts")
                 );
               }}
-            >
-              Update Loadout
-            </button>
+              text={"Update Loadout"}
+            />
           ) : (
-            <button
-              onClick={() => {
+            <LoadoutIcon
+              icon={<GiSwordsPower size="26" />}
+              clicky={() => {
                 Create(loadoutItemsList);
                 setLoadoutItemsList([]);
                 GetLoadouts();
                 history.push("/Loadouts");
               }}
-            >
-              Save Loadout
-            </button>
+              text={"Save Loadout"}
+            />
           )}
         </div>
       </div>
