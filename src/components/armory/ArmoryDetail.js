@@ -16,25 +16,29 @@ export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   }, [itemHash]);
 
   return (
-    <div>
+    <div className="sticky top-[16.5rem] lg:top-[20.5rem] flex bg-white">
       {console.log(itemHash)}
-      <button
-        className="navbar-icon"
-        onClick={() => {
-          return closeDetail();
-        }}
-      >
-        Close
-      </button>
+      <div className="w-[50px]">
+        <button
+          className="navbar-icon"
+          onClick={() => {
+            return closeDetail();
+          }}
+        >
+          Close
+        </button>
+      </div>
       <div>
         <h3>{item?.Response?.displayProperties?.name}</h3>
       </div>
-      <img
-        src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
-        alt={item?.Response?.displayProperties?.name}
-      ></img>
-      <h6>{item?.Response?.itemTypeAndTierDisplayName}</h6>
       <div>
+        <img
+          src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
+          alt={item?.Response?.displayProperties?.name}
+        />
+      </div>
+      <h6>{item?.Response?.itemTypeAndTierDisplayName}</h6>
+      <div className="flex flex-wrap flex-col max-h-[150px] content-start gap-x-[1rem]">
         {item?.Response?.investmentStats.map((stat) => {
           for (const i of StatsEnum) {
             if (stat?.statTypeHash === parseInt(i?.stat) && stat?.value > 0) {
