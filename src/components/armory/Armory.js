@@ -138,13 +138,12 @@ export const Armory = ({
           </div>
         )}
 
-        <div>
-          {toggleDetail ? (
-            <ArmoryDetail itemHash={itemHash} closeDetail={closeDetail} />
-          ) : (
-            ""
-          )}
-        </div>
+        {toggleDetail ? (
+          <ArmoryDetail itemHash={itemHash} closeDetail={closeDetail} />
+        ) : (
+          ""
+        )}
+
         <div className="">
           <div className="search-results">
             {items
