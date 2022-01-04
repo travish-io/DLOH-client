@@ -56,9 +56,14 @@
 .new-loadout-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 4rem;
 }
 
 .new-item-container {
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
   display: flex;
   width: 96px;
   height: 96px;

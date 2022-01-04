@@ -4,6 +4,8 @@ import "./Loadouts.css";
 import { Armory } from "../armory/Armory";
 import { Create, editLoadout, GetLoadout, GetLoadouts } from "./LoadoutManager";
 import { GiSwordsPower } from "react-icons/gi";
+import "./pofessional-ammo-icon.png";
+import "./exotic-armor-icon.png";
 
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
@@ -22,12 +24,12 @@ export const CreateLoadout = () => {
   }, []);
 
   const LoadoutIcon = ({ icon, clicky, text }) => (
-    <div className="create-icon group">
-      <button onClick={clicky}>{icon}</button>
+    <button className="create-icon group" onClick={clicky}>
+      {icon}
       <span className="create-tooltip group-hover:scale-100">
         <button onClick={clicky}>{text}</button>
       </span>
-    </div>
+    </button>
   );
 
   const LoadoutItem = ({ icon, hash, id, name, bucket_hash, type }) => (
@@ -116,7 +118,11 @@ export const CreateLoadout = () => {
                 );
               }
             })}
-            Kinetic Weapon Slot
+            <img
+              className="h-[63px] w-[68px] mt-[17px] ml-[6px]"
+              src={require("./pofessional-ammo-icon.png").default}
+              alt="Destiny 2 Primary ammo"
+            />
           </div>
           <div className="new-item-container" id="2465295065">
             {loadoutItemsList.map((i) => {
@@ -133,7 +139,11 @@ export const CreateLoadout = () => {
                 );
               }
             })}
-            Energy Weapon Slot
+            <img
+              className="h-[72px] w-[60px]"
+              src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-special-ammo-e1597420908657.png"
+              alt="Destiny 2 special ammo"
+            />
           </div>
           <div className="new-item-container" id="953998645">
             {loadoutItemsList.map((i) => {
@@ -154,14 +164,9 @@ export const CreateLoadout = () => {
             })}
             {
               <img
-                class="wp-image-3670 alignnone size-full entered lazyloaded"
+                className="h-[72px] w-[60px]"
                 src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-Heavy-ammo-e1597420989545.png"
                 alt="Destiny 2 Heavy ammo"
-                width="56"
-                height="56"
-                title="Destiny 2 Weapons Types: Understanding classes and slots"
-                data-lazy-src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-Heavy-ammo-e1597420989545.png"
-                data-ll-status="loaded"
               ></img>
             }
           </div>
@@ -204,7 +209,7 @@ export const CreateLoadout = () => {
             Exotic Armor Slot
           </div>
         </div>
-        <div>
+        <div className="translate-y-[-20px]">
           {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
             <LoadoutIcon
               icon={<GiSwordsPower size="26" />}

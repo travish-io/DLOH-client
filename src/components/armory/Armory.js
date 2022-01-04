@@ -111,7 +111,7 @@ export const Armory = ({
     <div className="">
       <div className="">
         {history.location.pathname !== "/Armory" ? (
-          <div className="sticky lg:top-[12.5rem] top-36 left-0 right-0 flex justify-center">
+          <div className="sticky lg:top-[20.25rem] top-[16rem] left-0 right-0 flex justify-center">
             <input
               className="armory-searchbar"
               type="text"
@@ -124,7 +124,7 @@ export const Armory = ({
             ></input>
           </div>
         ) : (
-          <div className="sticky top-[0.5rem] lg:top-14 left-0 right-0 flex justify-center">
+          <div className="sticky top-[0.5rem] lg:top-14 left-0 right-0 flex justify-center z-[1]">
             <input
               className="armory-searchbar"
               type="text"

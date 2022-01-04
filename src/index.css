@@ -48,9 +48,9 @@
   }
 
   .create-tooltip {
-    @apply absolute flex items-baseline justify-center w-auto p-2 my-2 ml-0  min-w-max left-14 rounded-md shadow-md
+    @apply absolute flex items-baseline justify-center w-auto p-2 mt-2 mb-24 ml-0  min-w-max rounded-md shadow-md
     text-white bg-gray-900 text-xs font-bold
-    transition-all duration-100 scale-0 origin-left;
+    transition-all duration-100 scale-0 origin-bottom;
   }
 
   /* .new-item-container {
@@ -62,7 +62,7 @@ body {
   margin: 6rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   body {
     margin: 0 6rem;
   }

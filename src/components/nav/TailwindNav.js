@@ -18,7 +18,7 @@ const NavBarIcon = ({ icon, link, text }) => (
 
 export const TailwindNav = () => {
   return (
-    <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-gray-900 shadow-lg lg:w-screen lg:h-16 lg:flex-row">
+    <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-gray-900 shadow-lg lg:w-screen lg:h-16 lg:flex-row z-[1]">
       <NavBarIcon
         icon={<GiBrutalHelm size="28" />}
         text={"Armory"}
