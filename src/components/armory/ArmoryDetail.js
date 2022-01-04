@@ -18,10 +18,10 @@ export const ArmoryDetail = ({ itemHash, closeDetail }) => {
 
   return (
     <div
-      className={`sticky ${
+      className={`sticky flex bg-white ${
         history.location.pathname === "/Armory"
-          ? "top-[4rem]"
-          : "top-[16.5rem] lg:top-[20.5rem] flex bg-white"
+          ? "lg:top-[4rem] top-0"
+          : "top-[16.5rem] lg:top-[20.5rem]"
       }`}
     >
       <div className="flex flex-col ">
