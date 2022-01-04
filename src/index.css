@@ -37,7 +37,7 @@
     transition-all duration-100 scale-0 origin-left;
   }
   .create-icon {
-    @apply relative flex items-center justify-center lg:flex-row h-12 w-12 mt-2 mb-2 mx-auto shadow-lg w-[25rem]
+    @apply relative flex items-center justify-center lg:flex-row h-12 mt-2 mb-2 mx-auto shadow-lg w-[25rem]
     bg-gray-800 text-green-500 rounded-3xl
     hover:bg-green-600 hover:text-white
     transition-all duration-700 ease-linear cursor-pointer;
