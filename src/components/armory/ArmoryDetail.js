@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   GetArmoryItemDetails,
   itemPerkDefinitions,
@@ -9,14 +10,20 @@ import "./Armory.css";
 export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   const [item, setItem] = useState({});
   const [perkDefinitions, setPerkDefinitions] = useState([]);
-
+  const history = useHistory();
   useEffect(() => {
     GetArmoryItemDetails(itemHash).then((data) => setItem(data));
     itemPerkDefinitions().then((data) => setPerkDefinitions(data));
   }, [itemHash]);
 
   return (
-    <div className="sticky top-[16.5rem] lg:top-[20.5rem] flex bg-white">
+    <div
+      className={`sticky ${
+        history.location.pathname === "/Armory"
+          ? "top-[4rem]"
+          : "top-[16.5rem] lg:top-[20.5rem] flex bg-white"
+      }`}
+    >
       <div className="flex flex-col ">
         {console.log(itemHash)}
         <div className="w-[50px]">
