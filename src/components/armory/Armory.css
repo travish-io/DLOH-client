@@ -2,11 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin: 3rem;
+  margin-top: 1rem;
+  justify-content: center;
 }
 
 .armory-item-icon {
   transition: 0s 10s;
+  /* max-width: 100%;
+  height: auto; */
+  scroll-behavior: none;
 }
 .armory-item-icon-dimmed {
   box-shadow: 1px 10px 20px darkslateblue;
@@ -15,14 +19,14 @@
   color: dimgray;
   opacity: 90%;
 }
-.search-container {
+/* .search-container {
   display: flex;
-  /* margin-bottom: 1rem; */
-}
+
+} */
 
 .armory-searchbar {
   width: 33%;
-  margin: 0 33% 0 33%;
+  /* margin: 0 33% 0 33%; */
   box-shadow: 1px 10px 20px goldenrod;
 }
 
@@ -35,6 +39,7 @@
   box-shadow: 1px 10px 20px darkslateblue;
   width: 96px;
   height: 96px;
+  touch-action: auto;
 }
 
 .item-btn {
@@ -72,3 +77,21 @@
   transition-delay: 0s;
   visibility: visible;
 } */
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}

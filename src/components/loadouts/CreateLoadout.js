@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import "./Loadouts.css";
 import { Armory } from "../armory/Armory";
 import { Create, editLoadout, GetLoadout, GetLoadouts } from "./LoadoutManager";
-import "./Loadouts.css";
+import { GiSwordsPower } from "react-icons/gi";
+import "./pofessional-ammo-icon.png";
+import "./exotic-armor-icon.png";
 
 export const CreateLoadout = () => {
   const [loadoutItemsList, setLoadoutItemsList] = useState([]);
@@ -20,208 +23,214 @@ export const CreateLoadout = () => {
     }
   }, []);
 
+  const LoadoutIcon = ({ icon, clicky, text }) => (
+    <button className="create-icon group" onClick={clicky}>
+      {icon}
+      <span className="create-tooltip group-hover:scale-100">
+        <button onClick={clicky}>{text}</button>
+      </span>
+    </button>
+  );
+
   const LoadoutItem = ({ icon, hash, id, name, bucket_hash, type }) => (
-    <div id={bucket_hash} key={id} className="item-container">
-      <img
-        src={`https://www.bungie.net${icon}`}
-        className="armory-item-icon"
-        alt={name}
-        id={id}
-        onClick={(evt) => {
-          setLoadoutItemsList(
-            loadoutItemsList.filter(
-              (item) => item.id !== parseInt(evt.target.id)
-            )
-          );
-        }}
-      />
-    </div>
+    <img
+      src={`https://www.bungie.net${icon}`}
+      className="armory-item-icon"
+      alt={name}
+      id={id}
+      key={id}
+      onClick={(evt) => {
+        setLoadoutItemsList(
+          loadoutItemsList.filter((item) => item.id !== parseInt(evt.target.id))
+        );
+      }}
+    />
   );
 
   return (
     <div>
-      <div
-        className="new-loadout-container"
-        style={{
-          border: "1px black solid",
-          display: "flex",
-          justifyContent: "center",
-        }}
-        draggable="true"
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => {
-          e.preventDefault();
-          console.log(loadoutItemsList);
-          console.log(newItemObj.current.type);
-          if (loadoutItemsList.length >= 4) {
-            return window.alert("All item slots are full.");
-          }
-          for (var { bucket_hash: x } of loadoutItemsList) {
-            for (var { type: y } of loadoutItemsList) {
-              if (
-                x === newItemObj.current.bucket_hash ||
-                y === newItemObj.current.type
-              ) {
-                return window.alert("That item slot has already been filled.");
+      <div className="sticky top-0 lg:top-16 left-0 right-0 bg-white lg:mt-24">
+        <div
+          className="new-loadout-container"
+          draggable="true"
+          onDragOver={(e) => e.preventDefault()}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            console.log(loadoutItemsList);
+            console.log(newItemObj.current.type);
+            if (loadoutItemsList.length >= 4) {
+              return window.alert("All item slots are full.");
+            }
+            for (var { bucket_hash: x } of loadoutItemsList) {
+              for (var { type: y } of loadoutItemsList) {
+                if (
+                  x === newItemObj.current.bucket_hash ||
+                  y === newItemObj.current.type
+                ) {
+                  return window.alert(
+                    "That item slot has already been filled."
+                  );
+                }
               }
             }
-          }
-          return setLoadoutItemsList((loadoutItemsList) => [
-            ...loadoutItemsList,
-            newItemObj.current,
-          ]);
-        }}
-      >
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
+            return setLoadoutItemsList((loadoutItemsList) => [
+              ...loadoutItemsList,
+              newItemObj.current,
+            ]);
           }}
-          id="1498876634"
-        >
-          {loadoutItemsList.map((i) => {
-            if (i.bucket_hash == "1498876634") {
-              return (
-                <LoadoutItem
-                  icon={i.icon}
-                  hash={i.item_hash}
-                  id={i.id}
-                  name={i.name}
-                  bucket_hash={i.bucket_hash}
-                  type={i.item_type_tier_name}
-                />
-              );
+          onDrop={(e) => {
+            e.preventDefault();
+            console.log(loadoutItemsList);
+            console.log(newItemObj.current.type);
+            if (loadoutItemsList.length >= 4) {
+              return window.alert("All item slots are full.");
             }
-          })}
-          Kinetic Weapon Slot
-        </div>
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="2465295065"
-        >
-          {loadoutItemsList.map((i) => {
-            if (i.bucket_hash == "2465295065") {
-              return (
-                <LoadoutItem
-                  icon={i.icon}
-                  hash={i.item_hash}
-                  id={i.id}
-                  name={i.name}
-                  bucket_hash={i.bucket_hash}
-                  type={i.item_type_tier_name}
-                />
-              );
-            }
-          })}
-          Energy Weapon Slot
-        </div>
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="953998645"
-        >
-          {loadoutItemsList.map((i) => {
-            if (i.bucket_hash == "953998645") {
-              console.log(i);
-              console.log(loadoutItemsList);
-              return (
-                <LoadoutItem
-                  icon={i.icon}
-                  hash={i.item_hash}
-                  id={i.id}
-                  name={i.name}
-                  bucket_hash={i.bucket_hash}
-                  type={i.item_type_tier_name}
-                />
-              );
-            }
-          })}
-          Heavy Weapon Slot
-        </div>
-        <div
-          className="new-item-container"
-          style={{
-            width: "96px",
-            height: "96px",
-            border: "solid 1px black",
-            display: "flex",
-          }}
-          id="exoticArmorSlot"
-        >
-          {history.location.pathname === `/Loadouts/Edit/${loadoutId}`
-            ? loadoutItemsList.map((i) => {
+            for (var { bucket_hash: x } of loadoutItemsList) {
+              for (var { type: y } of loadoutItemsList) {
                 if (
-                  i.type === "Exotic Armor" ||
-                  i.item_type_tier_name === "Exotic Helmet" ||
-                  i.item_type_tier_name === "Exotic Leg Armor" ||
-                  i.item_type_tier_name === "Exotic Gauntlets" ||
-                  i.item_type_tier_name === "Exotic Chest Armor"
+                  x === newItemObj.current.bucket_hash ||
+                  y === newItemObj.current.type
                 ) {
-                  return (
-                    <LoadoutItem
-                      icon={i.icon}
-                      hash={i.item_hash}
-                      id={i.id}
-                      name={i.name}
-                      bucket_hash={i.bucket_hash}
-                      type={i.item_type_tier_name}
-                    />
+                  return window.alert(
+                    "That item slot has already been filled."
                   );
                 }
-              })
-            : loadoutItemsList.map((i) => {
-                if (i.type === "Exotic Armor") {
-                  return (
-                    <LoadoutItem
-                      icon={i.icon}
-                      hash={i.item_hash}
-                      id={i.id}
-                      name={i.name}
-                      bucket_hash={i.bucket_hash}
-                      type={i.item_type_tier_name}
-                    />
-                  );
-                }
-              })}
-          Exotic Armor Slot
+              }
+            }
+            return setLoadoutItemsList((loadoutItemsList) => [
+              ...loadoutItemsList,
+              newItemObj.current,
+            ]);
+          }}
+        >
+          <div className="new-item-container" id="1498876634">
+            {loadoutItemsList.map((i) => {
+              if (i.bucket_hash === 1498876634) {
+                return (
+                  <LoadoutItem
+                    icon={i.icon}
+                    hash={i.item_hash}
+                    id={i.id}
+                    name={i.name}
+                    bucket_hash={i.bucket_hash}
+                    type={i.item_type_tier_name}
+                  />
+                );
+              }
+            })}
+            <img
+              className="h-[63px] w-[68px] mt-[17px] ml-[6px]"
+              src={require("./pofessional-ammo-icon.png").default}
+              alt="Destiny 2 Primary ammo"
+            />
+          </div>
+          <div className="new-item-container" id="2465295065">
+            {loadoutItemsList.map((i) => {
+              if (i.bucket_hash === 2465295065) {
+                return (
+                  <LoadoutItem
+                    icon={i.icon}
+                    hash={i.item_hash}
+                    id={i.id}
+                    name={i.name}
+                    bucket_hash={i.bucket_hash}
+                    type={i.item_type_tier_name}
+                  />
+                );
+              }
+            })}
+            <img
+              className="h-[72px] w-[60px]"
+              src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-special-ammo-e1597420908657.png"
+              alt="Destiny 2 special ammo"
+            />
+          </div>
+          <div className="new-item-container" id="953998645">
+            {loadoutItemsList.map((i) => {
+              if (i.bucket_hash === 953998645) {
+                console.log(i);
+                console.log(loadoutItemsList);
+                return (
+                  <LoadoutItem
+                    icon={i.icon}
+                    hash={i.item_hash}
+                    id={i.id}
+                    name={i.name}
+                    bucket_hash={i.bucket_hash}
+                    type={i.item_type_tier_name}
+                  />
+                );
+              }
+            })}
+            {
+              <img
+                className="h-[72px] w-[60px]"
+                src="https://www.blueberries.gg/wp-content/uploads/2020/08/Destiny-2-Heavy-ammo-e1597420989545.png"
+                alt="Destiny 2 Heavy ammo"
+              ></img>
+            }
+          </div>
+          <div className="new-item-container" id="exoticArmorSlot">
+            {history.location.pathname === `/Loadouts/Edit/${loadoutId}`
+              ? loadoutItemsList.map((i) => {
+                  if (
+                    i.type === "Exotic Armor" ||
+                    i.item_type_tier_name === "Exotic Helmet" ||
+                    i.item_type_tier_name === "Exotic Leg Armor" ||
+                    i.item_type_tier_name === "Exotic Gauntlets" ||
+                    i.item_type_tier_name === "Exotic Chest Armor"
+                  ) {
+                    return (
+                      <LoadoutItem
+                        icon={i.icon}
+                        hash={i.item_hash}
+                        id={i.id}
+                        name={i.name}
+                        bucket_hash={i.bucket_hash}
+                        type={i.item_type_tier_name}
+                      />
+                    );
+                  }
+                })
+              : loadoutItemsList.map((i) => {
+                  if (i.type === "Exotic Armor") {
+                    return (
+                      <LoadoutItem
+                        icon={i.icon}
+                        hash={i.item_hash}
+                        id={i.id}
+                        name={i.name}
+                        bucket_hash={i.bucket_hash}
+                        type={i.item_type_tier_name}
+                      />
+                    );
+                  }
+                })}
+            Exotic Armor Slot
+          </div>
         </div>
-
-        <div>
+        <div className="translate-y-[-20px]">
           {history.location.pathname === `/Loadouts/Edit/${loadoutId}` ? (
-            <button
-              onClick={() => {
-                editLoadout(loadoutId, loadoutItemsList).then(
+            <LoadoutIcon
+              icon={<GiSwordsPower size="26" />}
+              clicky={() => {
+                editLoadout(loadoutId, loadoutItemsList, loadout.name).then(
                   history.push("/Loadouts")
                 );
               }}
-            >
-              Update Loadout
-            </button>
+              text={"Update Loadout"}
+            />
           ) : (
-            <button
-              onClick={() => {
+            <LoadoutIcon
+              icon={<GiSwordsPower size="26" />}
+              clicky={() => {
                 Create(loadoutItemsList);
                 setLoadoutItemsList([]);
                 GetLoadouts();
                 history.push("/Loadouts");
               }}
-            >
-              Save Loadout
-            </button>
+              text={"Save Loadout"}
+            />
           )}
         </div>
       </div>
