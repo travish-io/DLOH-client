@@ -16,8 +16,8 @@ export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   }, [itemHash]);
 
   return (
-    <div className="flex">
-      <div className="sticky top-[16.5rem] lg:top-[20.5rem] flex flex-col bg-white">
+    <div className="sticky top-[16.5rem] lg:top-[20.5rem] flex">
+      <div className="flex flex-col bg-white">
         {console.log(itemHash)}
         <div className="w-[50px]">
           <button
