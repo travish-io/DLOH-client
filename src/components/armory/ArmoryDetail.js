@@ -18,15 +18,16 @@ export const ArmoryDetail = ({ itemHash, closeDetail }) => {
   return (
     <div>
       {console.log(itemHash)}
+      <button
+        className="navbar-icon"
+        onClick={() => {
+          return closeDetail();
+        }}
+      >
+        Close
+      </button>
       <div>
         <h3>{item?.Response?.displayProperties?.name}</h3>
-        <button
-          onClick={() => {
-            return closeDetail();
-          }}
-        >
-          Close
-        </button>
       </div>
       <img
         src={`https://www.bungie.net${item?.Response?.displayProperties?.icon}`}
