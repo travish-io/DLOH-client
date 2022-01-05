@@ -54,7 +54,6 @@ export const Loadouts = () => {
                 icon={<MdDeleteForever size="26" />}
                 clicky={() => {
                   deleteLoadout(loadout.id);
-                  GetLoadouts().then((data) => setLoadouts(data));
                 }}
                 text={"Delete Loadout"}
               />

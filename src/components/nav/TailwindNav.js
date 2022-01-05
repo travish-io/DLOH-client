@@ -6,12 +6,26 @@ import {
   GiBrutalHelm,
   GiSwordsEmblem,
 } from "react-icons/gi";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const NavBarIcon = ({ icon, link, text }) => (
   <div className="navbar-icon group">
     <Link to={link}>{icon}</Link>
     <span className="navbar-tooltip group-hover:scale-100">
       <Link to={link}>{text}</Link>
+    </span>
+  </div>
+);
+
+const NavBarLogout = ({ icon, clicky, text }) => (
+  <div className="navbar-icon group">
+    <Link to="#" onClick={clicky}>
+      {icon}
+    </Link>
+    <span className="navbar-tooltip group-hover:scale-100">
+      <Link to="#" onClick={clicky}>
+        {text}
+      </Link>
     </span>
   </div>
 );
@@ -33,6 +47,13 @@ export const TailwindNav = () => {
         icon={<GiSwordSmithing size="28" />}
         text={"Create Loadout"}
         link={"/Loadouts/Create"}
+      />
+      <NavBarLogout
+        icon={<AiOutlineLogout size="28" />}
+        clicky={() => {
+          localStorage.removeItem("dloh_token");
+        }}
+        text={"Logout"}
       />
     </div>
   );

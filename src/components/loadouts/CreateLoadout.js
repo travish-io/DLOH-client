@@ -217,6 +217,7 @@ export const CreateLoadout = () => {
                 editLoadout(loadoutId, loadoutItemsList, loadout.name).then(
                   history.push("/Loadouts")
                 );
+                GetLoadouts();
               }}
               text={"Update Loadout"}
             />
