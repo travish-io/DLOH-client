@@ -16,10 +16,10 @@ fieldset {
   text-align: left;
 }
 
-.form--login > fieldset > input[type="email"],
+/* .form--login > fieldset > input[type="username"],
 .form--login > fieldset > input[type="password"] {
   width: 25em;
-}
+} */
 
 .label--login {
   width: 8rem;
